@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/main/java/bds/devweb/controllers/AccueilBDSServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/AccueilServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/AdministratifBDSServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/ChallengeBDSServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/ConnexionServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/DeconnexionServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/FicheEtudiantServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/FicheVPServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/SportBDSServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/filters/AuthenEtudiantFilter.java=UTF-8
+encoding//src/main/java/bds/devweb/filters/AuthenVpFilter.java=UTF-8
+encoding//src/main/java/bds/devweb/metier/Manager.java=UTF-8

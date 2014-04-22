@@ -1,0 +1,111 @@
+body
+{
+    color : #333;
+    background-color: #000;
+}
+
+#sportBDS
+{
+    position : absolute;
+    top : 334px;
+    left : 50%;
+    margin-left : -425px;
+    background-color: white;
+    width : 850px;
+    height : auto;
+    padding-bottom: 50px;
+}
+
+#sportBDS h3
+{
+	postion : relative;
+	float : left;
+	margin-top : 5px;
+	margin-left : 250px;
+	margin-bottom : 10px;
+	font-size : 30px;
+}
+
+#sports_vp
+{
+	position : relative;
+	float : left;
+	margin-top : 10px;
+	margin-left : 5px;
+	width: 670px;
+}
+
+#listeSport_Vp
+{
+	position : relative;
+	float : left;
+	margin-left: 5px;
+}
+
+.infoVP
+{
+	position : relative;
+	float : left;
+	margin-top : 10px;
+	margin-left: 25px;
+	width : 200px;
+	border : 1px solid black;
+	display : none;
+}
+
+.infoVP h5
+{
+	margin-top : 0px;
+	padding: 2px;
+	text-align: center;
+	border : 1px solid blue;
+	color : white;
+	background-color: navy; 
+	margin-bottom : 0px;
+}
+
+#sportBDS table
+{
+	border-collapse: collapse;
+	margin-top : 10px;
+}
+#sportBDS td
+{
+	border : 1px solid black;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#sportBDS th
+{
+	background-color: navy;
+	color : white;
+}
+#sportBDS tbody tr:nth-child(odd)
+{
+	background-color: silver;
+}
+
+#newSport, #newEquipe, #suprEquipe, #suprSport, #modifVP
+{
+	position : relative;
+	float : left;
+	margin-top : 10px;
+	margin-left : 5px;
+	width: 670px;
+	display : none;
+}
+
+.info
+{
+	cursor : pointer;	
+}
+
+#oui
+{
+	display:none;
+}
+#non
+{
+	display:none;
+}

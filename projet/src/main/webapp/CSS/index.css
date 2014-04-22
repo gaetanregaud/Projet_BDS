@@ -1,0 +1,16 @@
+body
+{
+    color : #333;
+    background-color: #000;
+}
+section
+{
+    position : absolute;
+    top : 334px;
+    left : 50%;
+    margin-left : -425px;
+    background-color: white;
+    width : 850px;
+    height : auto;
+    padding-bottom: 50px;
+}

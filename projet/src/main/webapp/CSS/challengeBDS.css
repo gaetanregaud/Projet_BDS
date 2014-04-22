@@ -1,0 +1,112 @@
+body
+{
+    color : #333;
+    background-color: #000;
+}
+
+#challengeBDS
+{
+    position : absolute;
+    top : 334px;
+    left : 50%;
+    margin-left : -425px;
+    background-color: white;
+    width : 850px;
+    height : auto;
+    padding-bottom: 50px;
+}
+
+#challengeBDS h3
+{
+	postion : relative;
+	float : left;
+	margin-left : 250px;
+}
+
+#plus
+{
+	position : relative;
+	float : right;
+	margin-top : -3px;
+	margin-right : 385px;
+}
+
+#challenges
+{
+	position : relative;
+	float : left;
+	margin-top : 10px;
+	margin-left : 5px;
+	width: 670px;
+}
+
+#listeChallenge
+{
+	position : relative;
+	float : left;
+	margin-left: 5px;
+}
+
+.infoChallenge
+{
+	position : relative;
+	float : left;
+	margin-top : 10px;
+	margin-left: 25px;
+	border : 1px solid black;
+	padding : 5px;
+}
+
+.modifInfoChallenge
+{
+	position : relative;
+	float : left;
+	margin-left: 40px;
+	border : 1px solid black;
+	padding : 5px;
+}
+
+#challenges table
+{
+	border-collapse: collapse;
+	margin-top : 10px;
+}
+#challenges td
+{
+	border : 1px solid black;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#challenges th
+{
+	background-color: navy;
+	color : white;
+}
+#challenges tbody tr:nth-child(odd)
+{
+	background-color: silver;
+}
+
+#newChallenge
+{
+	position : relative;
+	float : left;
+	margin-top : 10px;
+	margin-left : 5px;
+	width: 670px;
+}
+
+.info
+{
+	cursor : pointer;	
+}
+
+.oui
+{
+	color : green;
+}
+.non
+{
+	color : red;
+}

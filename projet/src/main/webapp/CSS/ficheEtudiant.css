@@ -1,0 +1,92 @@
+body
+{
+    color : #333;
+    background-color: #000;
+}
+section
+{
+    position : absolute;
+    top : 334px;
+    left : 50%;
+    margin-left : -425px;
+    background-color: white;
+    width : 850px;
+    height : auto;
+    padding-bottom: 50px;
+}
+
+#connexion
+{
+	position : relative;
+	left : 50%;
+	margin-top : 100px;
+	margin-left : -200px;
+	text-align: center;
+	width:400px;
+}
+#photo_id
+{
+    float : left;
+    margin : 5px;
+    width : 250px;
+    height : 250px;
+    border : 1px solid BLACK;
+}
+
+#titre-h3
+{
+    text-align:center;
+}
+
+#information
+{
+	postion :absolute;
+	font-size : 15px;
+    float : left;
+    margin : 10px;
+    width : 500px;
+}
+#pratique
+{
+	position : absolute;
+	float : left;
+	left : 50%;
+	width : 700px;
+	margin-top : 200px;
+	margin-left : -350px;
+}
+#pratiquer_note table, #autre_pratique table, #table_challenge table
+{
+	border-collapse: collapse;
+	margin-top : 10px;
+}
+#pratiquer_note td, #pratiquer_note th, #autre_pratique td, #autre_pratique th, #table_challenge td, #table_challenge th
+{
+	border : 1px solid black;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#pratiquer_note th, #autre_pratique th, #table_challenge th
+{
+	background-color: navy;
+	color : white;
+}
+#pratiquer_note tbody tr:nth-child(odd), #autre_pratique tbody tr:nth-child(odd), #table_challenge tbody tr:nth-child(odd)
+{
+	background-color: silver;
+}
+.oui
+{
+	color : green;
+}
+.non
+{
+	color : red;
+}
+
+.btn, .btn a
+{
+	font-size: 15px;
+	color : blue;
+}
