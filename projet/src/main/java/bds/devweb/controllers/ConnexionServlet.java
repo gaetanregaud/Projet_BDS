@@ -56,7 +56,7 @@ public class ConnexionServlet extends HttpServlet {
 				confirmMessage = "Connexion r��ussie, vous avez bien ��t�� identifi�� comme Etudiant.";
 				bienvenue = "Bienvenue "+identifiant;
 			}
-			else errorMessage = "Connexion ��chou��";
+			else errorMessage = "Connexion échouée";
 			
 			request.getSession().setAttribute("confirm", confirmMessage);
 			request.getSession().setAttribute("error", errorMessage);
