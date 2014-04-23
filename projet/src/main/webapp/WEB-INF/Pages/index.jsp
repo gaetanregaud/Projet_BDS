@@ -17,7 +17,7 @@
 		<%@ include file="header.jsp" %>
     </header>
     <section>
-    	<h3>Bienvenue sur le site du BDS HEI</h3>
+    	<h3>Bienvenue sur le site du BDS Hautes Etudes d'Ingénieur</h3>
     	<%@ include file="calendrier.jsp" %>
     </section>
 </body>
