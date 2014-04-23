@@ -119,5 +119,38 @@ public class VPDao {
 		return listeVP;
 	}
 	
+	public void AjouterVP (String id_etudiant, String id_equipeSport){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO vp (id_etudiant, id_equipeSport, note_vp, annee_vp) VALUES ( ?, ?, 0, '2013/2014')");
+			stmt.setString(1,  id_etudiant);
+			stmt.setString(2,  id_equipeSport);
+			stmt.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void ModifierVPForEquipeSport (String id_equipeSport, String id_etudiant){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("UPDATE vp SET id_etudiant = ? WHERE id_equipeSport = ?");
+			stmt.setString(1,  id_etudiant);
+			stmt.setString(2,  id_equipeSport);
+			stmt.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
 
 }

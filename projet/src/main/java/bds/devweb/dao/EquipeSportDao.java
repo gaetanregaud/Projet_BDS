@@ -64,5 +64,43 @@ public class EquipeSportDao {
 		return listeEquipeSport;
 	}
 	
+	public void deleteEquipeSport (String id_equipeSport){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("DELETE FROM equipe_sport WHERE id_equipeSport = ?");
+			PreparedStatement stmts = connection.prepareStatement("DELETE FROM vp WHERE id_equipeSport = ?");
+			stmt.setString(1,  id_equipeSport);
+			stmts.setString(1,  id_equipeSport);
+			stmt.executeUpdate();
+			stmts.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void ajouterEquipeSport (String id_equipeSport, String nom_equipeSport, String id_categorie, String id_sport){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO equipe_sport (id_equipeSport, nom_equipeSport, id_categorie, id_sport) VALUES (?, ?, ?, ?)");
+			stmt.setString(1,  id_equipeSport);
+			stmt.setString(2,  nom_equipeSport);
+			stmt.setString(3,  id_categorie);
+			stmt.setString(4,  id_sport);
+			stmt.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
 
 }

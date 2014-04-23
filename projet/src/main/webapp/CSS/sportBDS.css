@@ -101,11 +101,11 @@ body
 	cursor : pointer;	
 }
 
-#oui
+.oui
 {
 	display:none;
 }
-#non
+.non
 {
 	display:none;
 }

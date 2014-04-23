@@ -28,7 +28,7 @@
     		<h3>Sports</h3>
     		<div id="sports_vp">
     			<fieldset>
-    				<legend>Liste des challenges</legend>
+    				<legend>Liste des Equipes de Sport</legend>
     				<div id="listeSport_Vp">
 	    				<table>
 	    					<thead>
@@ -68,112 +68,103 @@
     		<div id="newSport">
     			<fieldset>
     				<legend>Nouveau Sport</legend>
-    				<form method="post" action="#">
-    					<div id="ajousport">
-    						<label for="id_sport">Id du sport</label>
-	    					<input type="text" id="id_sport" name="id_sport"/>(ex: rugb)</br>
-	    					<label for="nom_sport">Nom du sport</label>
-	    					<input type="text" id="nom_sport" name="nom_sport"/></br>
-    					</div>
+    				<form method="post" action="sportbds">
+    					<input type="hidden" name="type" value="newSport"/>
+   						<label for="id_sport">Id du sport</label>
+    					<input type="text" class="id_sport" name="id_sport"/>(ex: rugb)</br>
+    					<label for="nom_sport">Nom du sport</label>
+    					<input type="text" class="nom_sport" name="nom_sport"/></br>
     					<label for="id_equipeSport">Id de l'équipe</label>
-    					<input type="text" id="id_equipeSport" name="id_equipeSport"/>(ex: rugb_e1)</br>
+    					<input type="text" class="id_equipeSport" name="id_equipeSport"/>(ex: rugb_e1)</br>
     					<label for="nom_equipeSport">Nom de l'équipe</label>
-    					<input type="text" id="nom_equipeSport" name="nom_equipeSport"/>(ex : Equipe 1)</br>
-	    					<form>
-	    						<label for="vp">VP :</label>
-	    						<input type="text" id="vp" name="vp"/>
-	    						<span id="oui"><img src="IMAGE/main/oui_icone.jpg" width="15px" height="15px"/></span>
-	    						<span id="non"><img src="IMAGE/main/non_icone.jpg" width="15px" height="15px"/></span>
-	    					</form>
-    					<input type="button" value="Valider" id="ok"/>
+    					<input type="text" class="nom_equipeSport" name="nom_equipeSport"/>(ex : Equipe 1)</br>
+   						<label for="vp">VP :</label>
+   						<input type="text" class="vp" name="vp"/>
+   						<span class="oui"><img src="IMAGE/main/oui_icone.jpg" width="15px" height="15px"/></span>
+   						<span class="non"><img src="IMAGE/main/non_icone.jpg" width="15px" height="15px"/></span>
+    					<input type="Submit" value="Valider" class="ok"/>
     				</form>
     			</fieldset>
     		</div>
     		<div id="newEquipe">
     			<fieldset>
     				<legend>Nouvelle Equipe</legend>
-    				<form method="post" action="#">
-    					<div id="sports">
-	    					<label for="id_sport">Sport</label>
-	    					<select id="id_sport" name="id_sport">
-	    						<c:forEach var="sport" items="${lisports}">
-	    							<option>${sport.nom_sport}</option>
-	    						</c:forEach>
-	    					</select></br>
-    					</div>
+    				<form method="post" action="sportbds">
+   						<input type="hidden" name="type" value="newEquipe"/>
+    					<label for="id_sport">Sport</label>
+    					<select class="id_sport" name="id_sport">
+    						<c:forEach var="sport" items="${lisports}">
+    							<option value="${sport.id_sport}">${sport.nom_sport}</option>
+    						</c:forEach>
+    					</select></br>
     					<label for="id_equipeSport">Id de l'équipe</label>
-    					<input type="text" id="id_equipeSport" name="id_equipeSport"/>(ex: rugb_e1)</br>
+    					<input type="text" class="id_equipeSport" name="id_equipeSport"/>(ex: rugb_e1)</br>
     					<label for="nom_equipeSport">Nom de l'équipe</label>
-    					<input type="text" id="nom_equipeSport" name="nom_equipeSport"/>(ex : Equipe 1)</br>
-	    					<form>
-	    						<label for="vp">VP :</label>
-	    						<input type="text" id="vp" name="vp"/>
-	    						<span id="oui"><img src="IMAGE/main/oui_icone.jpg" width="15px" height="15px"/></span>
-	    						<span id="non"><img src="IMAGE/main/non_icone.jpg" width="15px" height="15px"/></span>
-	    					</form>
-    					<input type="button" value="Valider" id="ok"/>
+    					<input type="text" class="nom_equipeSport" name="nom_equipeSport"/>(ex : Equipe 1)</br>
+	    				<label for="vp">VP :</label>
+	    				<input type="text" class="vp" name="vp"/>
+	    				<span class="oui"><img src="IMAGE/main/oui_icone.jpg" width="15px" height="15px"/></span>
+	    				<span class="non"><img src="IMAGE/main/non_icone.jpg" width="15px" height="15px"/></span>
+    					<input type="submit" value="Valider" class="ok"/>
     				</form>
     			</fieldset>
     		</div>
     		<div id="suprEquipe">
     			<fieldset>
     				<legend>Supprimer une équipe</legend>
-    				<form method="post" action="#">
-    					<div id="sports">
-	    					<label for="id_sport">Sport</label>
-	    					<select id="id_sport" name="id_sport">
-	    						<c:forEach var="sport" items="${lisports}">
-	    							<optgroup label="${sport.nom_sport}">
-	    								<c:forEach var="equipeSport" items="${listeEquipeSport}">
-		    								<c:if test="${sport.id_sport == equipeSport.id_sport}">
-		    									<option>${sport.nom_sport} (${equipeSport.nom_equipeSport})</option>
-		    								</c:if>
-	    								</c:forEach>
-	    							</optgroup>
-	    						</c:forEach>
-	    					</select></br>
-    					</div>
-    					<input type="button" title="Valider" value="Supprimer"/>
+    				<form method="post" action="sportbds">
+    					<input type="hidden" name="type" value="suprEquipe"/>
+    					<label for="id_equipeSport">Sport</label>
+    					<select id="id_equipeSport" name="id_equipeSport">
+    						<c:forEach var="sport" items="${lisports}">
+    							<optgroup label="${sport.nom_sport}">
+    								<c:forEach var="equipeSport" items="${listeEquipeSport}">
+	    								<c:if test="${sport.id_sport == equipeSport.id_sport}">
+	    									<option value="${equipeSport.id_equipeSport}">${sport.nom_sport} (${equipeSport.nom_equipeSport})</option>
+	    								</c:if>
+    								</c:forEach>
+    							</optgroup>
+    						</c:forEach>
+    					</select></br>
+    					<input type="submit" title="Valider" value="Supprimer"/>
     				</form>
     			</fieldset>
     		</div>
     		<div id="suprSport">
     			<fieldset>
     				<legend>Supprimer un sport</legend>
-    				<form method="post" action="#">
-    					<div id="sports">
-	    					<label for="id_sport">Sport</label>
-	    					<select id="id_sport" name="id_sport">
-	    						<c:forEach var="sport" items="${lisports}">
-		    						<option>${sport.nom_sport}</option>
-	    						</c:forEach>
-	    					</select></br>
-    					</div>
-    					<input type="button" title="Valider" value="Supprimer"/>
+    				<form method="post" action="sportbds">
+    					<input type="hidden" name="type" value="suprSport"/>
+    					<label for="id_sport">Sport</label>
+    					<select id="id_sport" name="id_sport">
+    						<c:forEach var="sport" items="${lisports}">
+	    						<option value="${sport.id_sport}">${sport.nom_sport}</option>
+    						</c:forEach>
+    					</select></br>
+    					<input type="submit" title="Valider" value="Supprimer"/>
     				</form>
     			</fieldset>
     		</div>
     		<div id="modifVP">
     			<fieldset>
     				<legend>Modifier un VP</legend>
-    				<form method="post" action="#">
-    					<div id="sports">
-	    					<label for="id_sport">Sport</label>
-	    					<select id="id_sport" name="id_sport">
-	    						<c:forEach var="sport" items="${lisports}">
-	    							<optgroup label="${sport.nom_sport}">
-	    								<c:forEach var="equipeSport" items="${listeEquipeSport}">
-		    								<c:if test="${sport.id_sport == equipeSport.id_sport}">
-		    									<option>${sport.nom_sport} (${equipeSport.nom_equipeSport})</option>
-		    								</c:if>
-	    								</c:forEach>
-	    							</optgroup>
-	    						</c:forEach>
-	    					</select></br>
-    					</div>
+    				<form method="post" action="sportbds">
+    					<input type="hidden" name="type" value="modifVP"/>
+    					<label for="modifequipesport">Sport</label>
+    					<select id="modifequipesport" name="modifequipesport">
+    						<c:forEach var="sport" items="${lisports}">
+    							<optgroup label="${sport.nom_sport}">
+    								<c:forEach var="equipeSport" items="${listeEquipeSport}">
+	    								<c:if test="${sport.id_sport == equipeSport.id_sport}">
+	    									<option value="${equipeSport.id_equipeSport}">${sport.nom_sport} (${equipeSport.nom_equipeSport})</option>
+	    								</c:if>
+    								</c:forEach>
+    							</optgroup>
+    						</c:forEach>
+    					</select></br>
     					<label for="vp">Nouveau VP :</label>
     					<input type="text" id="vp" name="vp"/></br>
-    					<input type="button" title="Modifier" value="Modifier"/>
+    					<input type="submit" title="Modifier" value="Modifier"/>
     				</form>
     			</fieldset>
     		</div>

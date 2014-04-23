@@ -186,6 +186,30 @@ public class Manager {
 		return equipesportDao.listerEquipeSport();
 	}
 	
+	public void supprimerEquipeSport(String id_equipeSport){
+		equipesportDao.deleteEquipeSport(id_equipeSport);
+	}
+	
+	public void supprimerSport(String id_sport){
+		sportDao.deleteSport(id_sport);
+	}
+	
+	public void modifierVPforEquipeSport(String id_equipeSport, String id_etudiant){
+		vpDao.ModifierVPForEquipeSport(id_equipeSport, id_etudiant);
+	}
+	
+	public void ajouterEquipeSport (String id_equipeSport, String nom_equipeSport, String id_categorie, String id_sport){
+		equipesportDao.ajouterEquipeSport(id_equipeSport, nom_equipeSport, id_categorie, id_sport);
+	}
+	
+	public void ajouterVP (String id_etudiant, String id_equipeSport){
+		vpDao.AjouterVP(id_etudiant, id_equipeSport);
+	}
+	
+	public void ajouterSport (String id_sport, String nom_sport){
+		sportDao.ajouterSport(id_sport, nom_sport);
+	}
+	
 	//Calendrier
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
 		return calendrierDao.calendrier(annee1, annee2);

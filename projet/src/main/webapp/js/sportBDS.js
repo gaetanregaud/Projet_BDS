@@ -73,22 +73,22 @@ $(document).ready(function() {
 		$("#ajousport").show();
 	});
 	
-	$("#vp").keyup(function(){
+	$(".vp").keyup(function(){
 		$.ajax({
 			url:"rechercheridetudiant",
 			type:"POST",
-			data:{vp:$("#vp").val()
+			data:{vp:this.value
 			}
 		}).done(function(data){
 			if(data == 'oui'){
-				$("#oui").show();
-				$("#non").hide();
-				$("#ok").show();
+				$(".oui").show();
+				$(".non").hide();
+				$(".ok").show();
 			}
 			else{
-				$("#non").show();
-				$("#oui").hide();
-				$("#ok").hide();
+				$(".non").show();
+				$(".oui").hide();
+				$(".ok").hide();
 			}
 		});
 	});
