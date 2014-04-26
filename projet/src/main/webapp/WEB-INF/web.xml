@@ -85,14 +85,6 @@
     <url-pattern>/presencechallenge</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AjouterChallenge</servlet-name>
-    <servlet-class>bds.devweb.controllers.AjouterChallengeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AjouterChallenge</servlet-name>
-    <url-pattern>/ajouterchallenge</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>AjouterAdresse</servlet-name>
     <servlet-class>bds.devweb.controllers.AjouterAdresseServlet</servlet-class>
   </servlet>

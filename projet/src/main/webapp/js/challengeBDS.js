@@ -1,21 +1,20 @@
 $(document).ready(function() {
 	
-	$(".newadresse").hide();
 	$(".infoChallenge").hide();
 	$(".modifInfoChallenge").hide();
-	$(".connu").hide();
 	$("#challenges").show();
 	$("#newChallenge").hide();
+	$("#suprChallenge").hide();
 	
 	$(".plus").click(function(){
 		$(".adresses").hide();
-		$(".newadresse").show();
+		$("#newadresse").show();
 		$(".ajouterChall").hide();
 	});
 	
 	$(".retour").click(function(){
 		$(".adresses").show();
-		$(".newadresse").hide();
+		$("#newadresse").hide();
 		$(".ajouterChall").show();
 	});
 	
@@ -56,13 +55,24 @@ $(document).ready(function() {
 	});
 	
 	$("#liste_chall").click(function(){
-		$("#challenges").show();
 		$("#newChallenge").hide();
+		$("#suprChallenge").hide();
+		$("#challenges").show();
 	});
 	
 	$("#ajou_chall").click(function(){
 		$("#challenges").hide();
+		$("#suprChallenge").hide();
 		$("#newChallenge").show();
+		$("#new").show();
+		$(".connu").hide();
+		$("#newadresse").hide();
+	});
+	
+	$("#supr_chall").click(function(){
+		$("#challenges").hide();
+		$("#newChallenge").hide();
+		$("#suprChallenge").show();
 	});
 	
 	
