@@ -133,6 +133,10 @@ public class Manager {
 		seanceDao.AjouterSeance(seance);
 	}
 	
+	public void deleteChallenge (String id_challenge){
+		challengeDao.deleteChallenge(id_challenge);
+	}
+	
 	
 	//Requ��te pour la barre de menus
 	public List<Sport> listerLiSports() {
@@ -208,6 +212,10 @@ public class Manager {
 	
 	public void ajouterSport (String id_sport, String nom_sport){
 		sportDao.ajouterSport(id_sport, nom_sport);
+	}
+	
+	public Challenge getChallenge (String id_challenge){
+		return challengeDao.getChallenge(id_challenge);
 	}
 	
 	//Calendrier

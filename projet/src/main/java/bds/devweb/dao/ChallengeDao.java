@@ -16,6 +16,35 @@ import bds.devweb.model.Challenge;
 
 public class ChallengeDao {
 	
+	public Challenge getChallenge(String id_challenge){
+		Challenge challenge = null;
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("SELECT challenge.*, adresse.* FROM challenge INNER JOIN adresse ON challenge.id_adresse = adresse.id_adr WHERE challenge.id_challenge = ?");
+			stmt.setString(1, id_challenge);
+			ResultSet results = stmt.executeQuery();
+			if(results.next()){
+				challenge = new Challenge(
+					results.getString("challenge.id_challenge"),
+					results.getString("challenge.nom_challenge"),
+					results.getDate("challenge.date_challenge"),
+					results.getTime("challenge.heure_challenge"),
+					results.getString("challenge.description_challenge"),
+					results.getString("challenge.id_adresse"));
+				challenge.setAdresse(new Adresse(results.getString("adresse.id_adr"),results.getString("adresse.site_adr"),results.getString("adresse.num_adr"),results.getString("adresse.rue_adr"),results.getString("adresse.cp_adr"),results.getString("adresse.ville_adr"),results.getString("adresse.pays_adr")));
+			}
+			//Fermer la connexion
+			results.close();
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return challenge;
+	}
+	
 	public List<Challenge> listerChallenge(){
 		List<Challenge> listeChallenge = new ArrayList<Challenge>();
 		try {
@@ -94,5 +123,22 @@ public class ChallengeDao {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void deleteChallenge (String id_challenge){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			
+			PreparedStatement stmt = connection.prepareStatement("DELETE FROM challenge WHERE id_challenge = ?");
+			stmt.setString(1,  id_challenge);
+			stmt.executeUpdate();
+			stmt.close();
+			
+			//Fermer la connexion
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
 }

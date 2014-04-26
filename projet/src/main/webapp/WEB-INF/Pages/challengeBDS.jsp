@@ -213,9 +213,10 @@
     		<div id="suprChallenge">
     			<fieldset>
     				<legend>Supprimer un challenge</legend>
-    				<form method="post" action="#">
-	    				<label for="suprchallenge">Selectionner un challenge</label>
-	    				<select class="id_challenge" id="suprchallenge" name="suprchallenge">
+    				<form method="post" action="challengebds">
+    					<input type="hidden" class="type" name="type" value="suprChallenge"/>
+	    				<label for="id_challenge">Selectionner un challenge</label>
+	    				<select class="id_challenge" class="id_challenge" name="id_challenge">
 		    				<c:forEach var="challenge" items="${challenges}">
 		    					<option value="${challenge.id_challenge}">
 		    						${challenge.nom_challenge}
@@ -226,6 +227,33 @@
 	    				<br />
 	    				<input type="submit" value="Supprimer">
     				</form>
+    			</fieldset>
+    		</div>
+    		<div id="modifChallenge">
+    			<fieldset>
+    				<legend>Modifier Challenge</legend>
+    				<label for="modifchallenge">Choisissez un challenge :</label>
+    				<select id="modifchallenge" name="modifchallenge">
+    					<c:forEach var="challenge" items="${challenges}">
+	    					<option value="${challenge.id_challenge}">
+	    						${challenge.nom_challenge}
+	    						(${challenge.date_challenge})
+	    					</option>
+		    			</c:forEach>
+    				</select>
+    				<div id="modif_InfoChallenge">
+    					<form method="post">
+		    				<input type="hidden" name="modifid_challenge" id="modifid_challenge" required="required"/>
+		    				<label for="nom_challenge">Nom</label>
+		    				<input type="text" name="modifnom_challenge" id="modifnom_challenge" required="required"/><br />
+		    				<label for="date_challenge">Date</label>
+		    				<input type="date" name="modifdate_challenge" id="modifdate_challenge" required="required"/><br />
+		    				<label for="heure_challenge">Heure</label>
+		    				<input type="time" name="modifheure_challenge" id="modifheure_challenge" required="required"/><br />
+	    					<label for="description">Description</label>
+	    					<textarea title="descritption"  name="description" id ="modifdescription" cols="70px" rows="5px" class="description">${typechallenge.description_challenge}</textarea>
+    					</form>
+    				</div>
     			</fieldset>
     		</div>
     	</c:if>
