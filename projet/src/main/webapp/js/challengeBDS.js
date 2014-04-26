@@ -2,38 +2,46 @@ $(document).ready(function() {
 	
 	$(".infoChallenge").hide();
 	$(".modifInfoChallenge").hide();
-	$("#challenges").hide();
-	$("#newChallenge").show();
+	$("#challenges").show();
+	$("#newChallenge").hide();
 	$("#suprChallenge").hide();
 	$("#modifChallenge").hide();
-	$(".connu").hide();
-	$("#newadresse").hide();
 	
 	$(".plus").click(function(){
 		$(".adresses").hide();
-		$("#newadresse").show();
+		$(".newadresse").show();
 		$(".ajouterChall").hide();
+		$(".btn_modifChallenge").hide();
 	});
 	
 	$(".retour").click(function(){
 		$(".adresses").show();
-		$("#newadresse").hide();
+		$(".newadresse").hide();
 		$(".ajouterChall").show();
+		$(".btn_modifChallenge").show();
 	});
 	
-	$(".ajouterAdr").click(function(){
+	$("#btnAjou_ajouterAdr").click(function(){
 		$.ajax({
-			url:"ajouteradresse",
+			url:"adresse",
 			type:"POST",
-			data:{nom:$("#nom").val(),
-				num:$("#num").val(),
-				rue:$("#rue").val(),
-				cp:$("#cp").val(),
-				ville:$("#ville").val(),
-				pays:$("#pays").val()
+			data:{nom:$("#ajounom").val(),
+				num:$("#ajounum").val(),
+				rue:$("#ajourue").val(),
+				cp:$("#ajoucp").val(),
+				ville:$("#ajouville").val(),
+				pays:$("#ajoupays").val()
 			}
+		}).done(function(data){
+			var select = document.getElementById("lieu");
+			var value = data.id;
+			var nom = data.nom;
+			select.options[select.options.length] = new Option(nom, value);
+			select.options[select.options.length-1].selected = true;
+			$(".adresses").show();
+			$(".newadresse").hide();
+			$(".ajouterChall").show();	
 		});
-		
 	});
 	
 	$(".info").click(function(){
@@ -50,13 +58,6 @@ $(document).ready(function() {
 		$("#modifInfo"+id_chall).show();
 	});
 	
-	$("#type").change(function(){
-		var id_type = this.value;
-		$(".connu").hide();
-		$("#new").hide();
-		$("#"+id_type).show();
-	});
-	
 	$("#liste_chall").click(function(){
 		$("#newChallenge").hide();
 		$("#suprChallenge").hide();
@@ -69,9 +70,7 @@ $(document).ready(function() {
 		$("#suprChallenge").hide();
 		$("#newChallenge").show();
 		$("#modifChallenge").hide();
-		$("#new").show();
-		$(".connu").hide();
-		$("#newadresse").hide();
+		$(".newadresse").hide();
 	});
 	
 	$("#supr_chall").click(function(){
@@ -87,6 +86,9 @@ $(document).ready(function() {
 		$("#suprChallenge").hide();
 		$("#modifChallenge").show();
 		$("#modif_InfoChallenge").hide();
+		$(".newadresse").hide();
+		$(".adresses").hide();
+		$(".btn_modifChallenge").hide();
 	});
 	
 	function convertirDate(date){
@@ -143,6 +145,8 @@ $(document).ready(function() {
 	
 	$("#modifchallenge").change(function(){
 		$("#modif_InfoChallenge").show();
+		$(".adresses").show();
+		$(".btn_modifChallenge").show();
 		$.ajax({
 			url:"challengebds",
 			type:"post",
@@ -159,6 +163,36 @@ $(document).ready(function() {
 			document.getElementById("modifheure_challenge").value = heure;
 			document.getElementById("modifdescription").value = data.description_challenge;
 		});
+	});
+	
+	$("#ajouchallenge").change(function(){
+		if($("#ajouchallenge").val()=="new"){
+			document.getElementById("ajouid_challenge").value = "";
+			document.getElementById("ajounom_challenge").value = "";
+			document.getElementById("ajoudescription").value = "";
+		}
+		else{
+			$.ajax({
+				url:"challengebds",
+				type:"post",
+				data:{
+					type:"ajouChallenge",
+					nom_challenge:$("#ajouchallenge").val()
+				}
+			}).done(function(data){
+				document.getElementById("ajouid_challenge").value = data.id_challenge;
+				document.getElementById("ajounom_challenge").value = data.nom_challenge;
+				document.getElementById("ajoudescription").value = data.description_challenge;
+				var id_adr = data.adresse.id;
+				var adresses = document.getElementById("lieu");
+				for(var i=0; i<adresses.length; i++){
+					adresses.options[i].selected = false;
+					if(adresses.options[i].value == id_adr){
+						adresses.options[i].selected = true;
+					}
+				}
+			});
+		}
 	});
 	
 	

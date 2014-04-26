@@ -85,14 +85,6 @@
     <url-pattern>/presencechallenge</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AjouterAdresse</servlet-name>
-    <servlet-class>bds.devweb.controllers.AjouterAdresseServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AjouterAdresse</servlet-name>
-    <url-pattern>/ajouteradresse</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>AccueilBDS</servlet-name>
     <servlet-class>bds.devweb.controllers.AccueilBDSServlet</servlet-class>
   </servlet>
@@ -165,5 +157,15 @@
   <servlet-mapping>
     <servlet-name>AccueilServlet</servlet-name>
     <url-pattern>/AccueilServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdresseServlet</display-name>
+    <servlet-name>AdresseServlet</servlet-name>
+    <servlet-class>bds.devweb.controllers.AdresseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdresseServlet</servlet-name>
+    <url-pattern>/adresse</url-pattern>
   </servlet-mapping>
 </web-app>

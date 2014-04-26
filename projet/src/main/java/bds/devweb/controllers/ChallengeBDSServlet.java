@@ -53,13 +53,6 @@ public class ChallengeBDSServlet extends HttpServlet {
 			List<Challenge> typeschallenge = Manager.getInstance().listerTypeChallenge();
 			request.setAttribute("typeschallenge", typeschallenge);
 			
-			String id_challenge = request.getParameter("id_challenge");
-			Challenge challenge = Manager.getInstance().getChallenge(id_challenge);
-			Gson gson = new Gson();
-			String challengeJson = gson.toJson(challenge);
-			response.setContentType("application/json");
-			response.getWriter().write(challengeJson);
-			
 		//Fin Donn��es relatives �� la page
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/challengeBDS.jsp");
 			view.forward(request, response);
@@ -109,6 +102,40 @@ public class ChallengeBDSServlet extends HttpServlet {
 			response.setContentType("application/json");
 			response.getWriter().write(challengeJson);
 			System.out.println("Ca marche");
+		}
+		if(type.equals("ajouChallenge")){
+			String nom_challenge = request.getParameter("nom_challenge");
+			Challenge challenge = Manager.getInstance().getLastChallenge(nom_challenge);
+			Gson gson = new Gson();
+			String challengeJson = gson.toJson(challenge);
+			response.setContentType("application/json");
+			response.getWriter().write(challengeJson);
+			System.out.println("Ca marche");
+		}
+		if(type.equals("validerModifChallenge")){
+			String id_challenge = request.getParameter("modifid_challenge");
+			String nom_challenge = request.getParameter("modifnom_challenge");
+			String date = request.getParameter("modifdate_challenge");
+			Date date_challenge = null;
+			try {
+				date_challenge = dateFormat.parse(date);
+			}
+			catch (ParseException e){
+				e.printStackTrace();
+			}
+			String heure = request.getParameter("modifheure_challenge");
+			Date heure_challenge = null;
+			try {
+				heure_challenge = heureFormat.parse(heure);
+			}
+			catch (ParseException e){
+				e.printStackTrace();
+			}
+			String description_challenge = request.getParameter("modifdescription");
+			String id_adresse = request.getParameter("modiflieu");
+			Challenge challenge = new Challenge(id_challenge, nom_challenge, date_challenge, heure_challenge, description_challenge, id_adresse);
+			Manager.getInstance().modifierChallenge(challenge);
+			response.sendRedirect("challengebds");
 		}
 	}
 

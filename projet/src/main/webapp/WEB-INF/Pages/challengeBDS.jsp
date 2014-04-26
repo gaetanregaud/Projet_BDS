@@ -114,63 +114,28 @@
     		<div id="newChallenge">
 	    		<fieldset>
 	    			<legend>Nouveau Challenge</legend>
-	    			<label for="type">Type de challenge :</label>
-	    			<select id="type" name="type">
+	    			<label for="ajouchallenge">Type de challenge :</label>
+	    			<select id="ajouchallenge" name="ajouchallenge">
 	    				<option value="new">New</option>
 	    				<c:forEach var="typechallenge" items="${typeschallenge}">
 							<option value="${typechallenge.nom_challenge}">${typechallenge.nom_challenge}</option>
 	    				</c:forEach>
 	    			</select>
-	    			<div> 
-		    			<c:forEach var="typechallenge" items="${typeschallenge}">
-		    				<div class="connu" id="${typechallenge.nom_challenge}">
-				    			<form method="post" action="challengebds">
-				    				<input type="hidden" class="type" name="type" value="newChallenge"/>
-				    				<fieldset>
-				    					<legend>Informations</legend>
-					    				<label for="id_challenge">Identifiant</label>
-					    				<input type="text" name="id_challenge" class="id_challenge" value="${typechallenge.id_challenge}" required="required"/><br />
-					    				<label for="nom_challenge">Nom</label>
-					    				<input type="text" name="nom_challenge" class="nom_challenge" value="${typechallenge.nom_challenge}" required="required"/><br />
-					    				<label for="date_challenge">Date</label>
-					    				<input type="date" name="date_challenge" class="date_challenge" required="required"/><br />
-					    				<label for="heure_challenge">Heure</label>
-					    				<input type="time" name="heure_challenge" class="heure_challenge" required="required"/><br />
-				    					<label for="description">Description</label>
-				    					<textarea title="descritption"  name="description" id ="description" cols="70px" rows="5px" class="description">${typechallenge.description_challenge}</textarea>
-				    				</fieldset>
-				    				<fieldset>
-				    					<legend>Adresse</legend>
-				    					<div class="adresses">
-				    						<label for="lieu">Lieu</label>
-				    						<select name="lieu" class="lieu">
-				    							<c:forEach var="adresse" items="${adresses}">
-				    								<option value="${adresse.id}" ${typechallenge.id_adrChal == adresse.id ? 'selected' : ''}>${adresse.nom}</option>
-				    							</c:forEach>
-				    						</select>
-				    						<img src="IMAGE/main/plus.png" class="plus" width="25px" height="25px">
-				    					</div>
-				    				</fieldset>
-				    				<input type="submit" class="ajouterChall" value="Ajouter"/>
-				    			</form>
-		    				</div>	
-		    			</c:forEach>
-		    		</div>
 	    			<div id="new">
 		    			<form method="post" action="challengebds">
 		    				<input type="hidden" class="type" name="type" value="newChallenge"/>
 		    				<fieldset>
 		    					<legend>Informations</legend>
 			    				<label for="id_challenge">Identifiant</label>
-			    				<input type="text" name="id_challenge" class="id_challenge" required="required"/><br />
+			    				<input type="text" name="id_challenge" id="ajouid_challenge" required="required"/><br />
 			    				<label for="nom_challenge">Nom</label>
-			    				<input type="text" name="nom_challenge" class="nom_challenge" required="required"/><br />
+			    				<input type="text" name="nom_challenge" id="ajounom_challenge" required="required"/><br />
 			    				<label for="date_challenge">Date</label>
-				    			<input type="date" name="date_challenge" class="date_challenge" required="required"/><br />
+				    			<input type="date" name="date_challenge" id="ajoudate_challenge" required="required"/><br />
 				    			<label for="heure_challenge">Heure</label>
-				    			<input type="time" name="heure_challenge" class="heure_challenge" required="required"/><br />
-			    				<label for="description">Description</label>
-			    				<textarea title="descritption" name="description" id ="description" cols="70px" rows="5px" class="description"></textarea>
+				    			<input type="time" name="heure_challenge" id="ajouheure_challenge" required="required"/><br />
+			    				<label for="description">Description</label><br/>
+			    				<textarea title="descritption" name="description" id ="ajoudescription" cols="70px" rows="5px" class="description"></textarea>
 		    				</fieldset>
 		    				<div class="adresses">
 			    				<fieldset>
@@ -178,7 +143,7 @@
 			    						<label for="lieu">Lieu</label>
 			    						<select name="lieu" id="lieu">
 			    							<c:forEach var="adresse" items="${adresses}">
-			    								<option value="${adresse.id}">${adresse.nom}</option>
+			    								<option value="${adresse.id}" >${adresse.nom}</option>
 			    							</c:forEach>
 			    						</select>
 			    						<img src="IMAGE/main/plus.png" class="plus" width="25px" height="25px">
@@ -186,28 +151,28 @@
 		    				</div>
 		    				<input type="submit" class="ajouterChall" value="Ajouter"/>
 		    			</form>
+		    			<div class="newadresse">
+			    			<fieldset>
+				    			<legend>Adresse</legend>
+				    			<form>
+			    					<label for="nom">Nom du Site</label>
+				    				<input type="text" name="ajounom" id="ajounom" required="required"/><br />
+			    					<label for="num">Numéro</label>
+				    				<input type="text" name="ajounum" id="ajounum" required="required"/><br />
+				    				<label for="rue">Rue</label>
+				    				<input type="text" name="ajourue" id="ajourue" required="required"/><br />
+				    				<label for="cp">Code Postal</label>
+				    				<input type="text" name="ajoucp" id="ajoucp" required="required"/><br />
+				    				<label for="ville">Ville</label>
+				    				<input type="text" name="ajouville" id="ajouville" required="required"/><br />
+				    				<label for="pays">Pays</label>
+				    				<input type="text" name="ajouville" id="ajoupays" required="required"/><br />
+				    				<input type="submit"  id="btnAjou_ajouterAdr" value="Valider"/>
+				    				<input type="button"  class="retour" value="Retour"/>
+				    			</form>
+				    		</fieldset>
+				    	</div>
 	    			</div>
-	    			<div id="newadresse">
-		    			<fieldset>
-			    			<legend>Adresse</legend>
-			    			<form>
-		    					<label for="nom">Nom du Site</label>
-			    				<input type="text" name="nom" id="nom" required="required"/><br />
-		    					<label for="num">Numéro</label>
-			    				<input type="text" name="num" id="num" required="required"/><br />
-			    				<label for="rue">Rue</label>
-			    				<input type="text" name="rue" id="rue" required="required"/><br />
-			    				<label for="cp">Code Postal</label>
-			    				<input type="text" name="cp" id="cp" required="required"/><br />
-			    				<label for="ville">Ville</label>
-			    				<input type="text" name="ville" id="ville" required="required"/><br />
-			    				<label for="pays">Pays</label>
-			    				<input type="text" name="pays" id="pays" required="required"/><br />
-			    				<input type="button"  class="ajouterAdr" value="Valider"/>
-			    				<input type="button"  class="retour" value="Retour"/>
-			    			</form>
-			    		</fieldset>
-			    	</div>
 	    		</fieldset>
     		</div>
     		<div id="suprChallenge">
@@ -216,7 +181,7 @@
     				<form method="post" action="challengebds">
     					<input type="hidden" class="type" name="type" value="suprChallenge"/>
 	    				<label for="id_challenge">Selectionner un challenge</label>
-	    				<select class="id_challenge" class="id_challenge" name="id_challenge">
+	    				<select class="id_challenge" name="id_challenge">
 		    				<c:forEach var="challenge" items="${challenges}">
 		    					<option value="${challenge.id_challenge}">
 		    						${challenge.nom_challenge}
@@ -241,19 +206,54 @@
 	    					</option>
 		    			</c:forEach>
     				</select>
-    				<div id="modif_InfoChallenge">
-    					<form method="post">
+    				<form method="post" action="challengebds">
+	    				<div id="modif_InfoChallenge">
+	   						<input type="hidden" class="type" name="type" value="validerModifChallenge"/>
 		    				<input type="hidden" name="modifid_challenge" id="modifid_challenge" required="required"/>
-		    				<label for="nom_challenge">Nom</label>
+		    				<label for="nom_challenge">Nom :</label>
 		    				<input type="text" name="modifnom_challenge" id="modifnom_challenge" required="required"/><br />
-		    				<label for="date_challenge">Date</label>
+		    				<label for="date_challenge">Date :</label>
 		    				<input type="date" name="modifdate_challenge" id="modifdate_challenge" required="required"/><br />
-		    				<label for="heure_challenge">Heure</label>
+		    				<label for="heure_challenge">Heure :</label>
 		    				<input type="time" name="modifheure_challenge" id="modifheure_challenge" required="required"/><br />
-	    					<label for="description">Description</label>
-	    					<textarea title="descritption"  name="description" id ="modifdescription" cols="70px" rows="5px" class="description">${typechallenge.description_challenge}</textarea>
-    					</form>
-    				</div>
+	    					<label for="modifdescription">Description :</label><br/>
+	    					<textarea title="modifdescription"  name="modifdescription" id ="modifdescription" cols="70px" rows="5px" class="description">${typechallenge.description_challenge}</textarea>
+	    				</div>
+	    				<div class="adresses">
+				    				<fieldset>
+				    					<legend>Adresse</legend>
+				    						<label for="modiflieu">Lieu</label>
+				    						<select name="modiflieu" id="modiflieu">
+				    							<c:forEach var="adresse" items="${adresses}">
+				    								<option value="${adresse.id}" >${adresse.nom}</option>
+				    							</c:forEach>
+				    						</select>
+				    						<img src="IMAGE/main/plus.png" class="plus" width="25px" height="25px">
+			    					</fieldset>
+			    		</div>
+	    				<input type="submit" value="Modifier" class="btn_modifChallenge"/>
+    				</form>
+	    			<div class="newadresse">
+		    			<fieldset>
+			    			<legend>Adresse</legend>
+			    			<form>
+		    					<label for="nom">Nom du Site</label>
+			    				<input type="text" name="nom" id="nom" required="required"/><br />
+		    					<label for="num">Numéro</label>
+			    				<input type="text" name="num" id="num" required="required"/><br />
+			    				<label for="rue">Rue</label>
+			    				<input type="text" name="rue" id="rue" required="required"/><br />
+			    				<label for="cp">Code Postal</label>
+			    				<input type="text" name="cp" id="cp" required="required"/><br />
+			    				<label for="ville">Ville</label>
+			    				<input type="text" name="ville" id="ville" required="required"/><br />
+			    				<label for="pays">Pays</label>
+			    				<input type="text" name="pays" id="pays" required="required"/><br />
+			    				<input type="button"  class="ajouterAdr" value="Valider"/>
+			    				<input type="button"  class="retour" value="Retour"/>
+			    			</form>
+			    		</fieldset>
+			    	</div>
     			</fieldset>
     		</div>
     	</c:if>

@@ -218,6 +218,17 @@ public class Manager {
 		return challengeDao.getChallenge(id_challenge);
 	}
 	
+	public Challenge getLastChallenge (String nom_challenge){
+		return challengeDao.getLastChallenge(nom_challenge);
+	}
+	
+	public void modifierChallenge(Challenge challenge){
+		challengeDao.modifierChallenge(challenge);
+	}
+	
+	public Adresse getAdresseByNom(String nom_adresse){
+		return adresseDao.getAdresseByNom(nom_adresse);
+	}
 	//Calendrier
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
 		return calendrierDao.calendrier(annee1, annee2);

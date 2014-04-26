@@ -62,5 +62,34 @@ public class AdresseDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public Adresse getAdresseByNom(String nom_adresse){
+		Adresse adresse = null;
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("SELECT adresse.* FROM adresse WHERE adresse.site_adr = ?");
+			stmt.setString(1, nom_adresse);
+			ResultSet results = stmt.executeQuery();
+			if(results.next()){
+				adresse = new Adresse(
+					results.getString("adresse.id_adr"),
+					results.getString("adresse.site_adr"),
+					results.getString("adresse.num_adr"),
+					results.getString("adresse.rue_adr"),
+					results.getString("adresse.cp_adr"),
+					results.getString("adresse.ville_adr"),
+					results.getString("adresse.pays_adr"));
+			}
+			//Fermer la connexion
+			results.close();
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return adresse;
+	}
 
 }
