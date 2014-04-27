@@ -37,7 +37,6 @@
     				<p>VP : ${vp.prenom} ${vp.nom}</p>
     				<p>Téléphone : ${vp.telephone}</p>
     				<p>Mail : ${vp.mail}</p>
-    				<p>Année : ${vp.annee_vp}</p>
     			</fieldset>
     		</div>
     		<div id="participant">

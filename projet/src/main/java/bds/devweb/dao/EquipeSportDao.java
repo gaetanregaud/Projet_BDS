@@ -126,8 +126,7 @@ public class EquipeSportDao {
 						results.getBoolean("etudiant.certificat_etudiant"),
 						results.getString("licence_etudiant"),
 						results.getString("vp.id_equipeSport"),
-						results.getFloat("vp.note_vp"),
-						results.getString("vp.annee_vp"));
+						results.getFloat("vp.note_vp"));
 				vp.setEquipesport(new EquipeSport(
 						results.getString("sport.id_sport"),
 						results.getString("sport.nom_sport"),

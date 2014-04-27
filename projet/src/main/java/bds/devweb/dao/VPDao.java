@@ -59,8 +59,7 @@ public class VPDao {
 						results.getBoolean("etudiant.certificat_etudiant"),
 						results.getString("licence_etudiant"),
 						results.getString("vp.id_equipeSport"),
-						results.getFloat("vp.note_vp"),
-						results.getString("vp.annee_vp"));
+						results.getFloat("vp.note_vp"));
 				vp.setEquipesport(new EquipeSport(
 						results.getString("sport.id_sport"),
 						results.getString("sport.nom_sport"),
@@ -101,8 +100,7 @@ public class VPDao {
 						results.getBoolean("etudiant.certificat_etudiant"),
 						results.getString("licence_etudiant"),
 						results.getString("vp.id_equipeSport"),
-						results.getFloat("vp.note_vp"),
-						results.getString("vp.annee_vp"));
+						results.getFloat("vp.note_vp"));
 						vp.setEquipesport(new EquipeSport(
 								results.getString("sport.id_sport"),
 								results.getString("sport.nom_sport"),
@@ -127,7 +125,7 @@ public class VPDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO vp (id_etudiant, id_equipeSport, note_vp, annee_vp) VALUES ( ?, ?, 0, '2013/2014')");
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO vp (id_etudiant, id_equipeSport, note_vp) VALUES ( ?, ?, 0)");
 			stmt.setString(1,  id_etudiant);
 			stmt.setString(2,  id_equipeSport);
 			stmt.executeUpdate();

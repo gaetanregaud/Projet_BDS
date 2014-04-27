@@ -106,17 +106,11 @@
 a
 {
 	text-decoration : none;
-	color : Black;
 }
 .active, .active a
 {
     background-color: black;
     color : white;``
-}
-.active ul li a
-{
-    background-color: white;
-    color : black;
 }
 
 
@@ -142,6 +136,14 @@ a
 
 #listemenu ul li:hover ul li
 {
+    color:white;
+    background-color: black;
+    display : block;
+}
+
+#listemenu ul li:hover ul li a
+{
+	text-decoration : none;
     color:white;
     background-color: black;
     display : block;

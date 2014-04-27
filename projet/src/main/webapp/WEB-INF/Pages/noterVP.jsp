@@ -34,58 +34,58 @@
     				<legend>Evaluation</legend>
     				<p>Qualité d'organisation et de gestion :</p>
     				<ul>
-    					<li><label for="qog">Propose de bonnes conditions d'entraînement :</label>
-    						<input type="number" class="value" id="qog" name="qog" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note1">Propose de bonnes conditions d'entraînement :</label>
+    						<input type="number" class="value" id="note1" name="note1" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote1"></span>
     					</li>
-    					<li><label for="ga">Gère l'administratif (cotisatio, CM, prise de présence) :</label>
-    						<input type="number" class="value" id="ga" name="ga" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note2">Gère l'administratif (cotisatio, CM, prise de présence) :</label>
+    						<input type="number" class="value" id="note2" name="note2" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote2"></span>
     					</li>
-    					<li><label for="ti">Transmets les informations (Challenges, critères de notation) :</label>
-    						<input type="number" class="value" id="ti" name="ti" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note3">Transmets les informations (Challenges, critères de notation) :</label>
+    						<input type="number" class="value" id="note3" name="note3" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote3"></span>
     					</li>
     				</ul>
     				<p>Qualité d'animation :</p>
     				<ul>
-    					<li><label for="line2.1">Crée une ambiance au seuin de l'AS :</label>
-    						<input type="number" id="line2.1" name="line2.1" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note4">Crée une ambiance au seuin de l'AS :</label>
+    						<input type="number" class="value" id="note4" name="note4" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote4"></span>
     					</li>
-    					<li><label for="line2.2">Met en place des sorties, des repas :</label>
-    						<input type="number" id="line2.2" name="line2.2" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note5">Met en place des sorties, des repas :</label>
+    						<input type="number" class="value" id="note5" name="note5" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote5"></span>
     					</li>
-    					<li><label for="line2.3">Propose des entraînements construits, des matchs amicaux ou de repésentations:</label>
-    						<input type="number" id="line2.3" name="line2.3" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note6">Propose des entraînements construits, des matchs amicaux ou de repésentations:</label>
+    						<input type="number" class="value" id="note6" name="note6" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote6"></span>
     					</li>
     				</ul>
     				<p>Qualité de savoir être :</p>
     				<ul>
-    					<li><label for="line3.1">Communication :</label>
-    						<input type="number" id="line3.1" name="line3.1" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note7">Communication :</label>
+    						<input type="number" class="value" id="note7" name="note7" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote7"></span>
     					</li>
-    					<li><label for="line3.2">Attention aux membres :</label>
-    						<input type="number" id="line3.2" name="line3.2" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note8">Attention aux membres :</label>
+    						<input type="number" class="value" id="note8" name="note8" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote8"></span>
     					</li>
-    					<li><label for="line3.3">Présence / Ponctualité :</label>
-    						<input type="number" id="line3.3" name="line3.3" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note9">Présence / Ponctualité :</label>
+    						<input type="number" class="value" id="note9" name="note9" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote9"></span>
     					</li>
-    					<li><label for="line3.4">Aura :</label>
-    						<input type="number" id="line3.4" name="line3.4" value="0" min="0" max="2" required="required"/>
-    						/2
+    					<li><label for="note10">Aura :</label>
+    						<input type="number" class="value" id="note10" name="note10" value="0" min="0" max="2" required="required"/>
+    						/2<span id="snote10"></span>
     					</li>
     				</ul>
     				<label for="resultat">Note :</label>
-    				<input type="number" id="resultat" name="resultat">
+    				<input type="number" id="resultat" name="resultat"><span id="sresultat"></span>
     			</fieldset>
     		</div>
-    		<input type="submit" id="valider" value="Valider"/>
+    		<input type="button" id="valider" value="Valider"/>
     		<input type="button" id="Annuler" value="Annuler"/>
     </section>
 </body>

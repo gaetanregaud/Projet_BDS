@@ -40,8 +40,7 @@ public class PratiquerDao {
 								results.getBoolean("etudiant.certificat_etudiant"),
 								results.getString("licence_etudiant"),
 								results.getString("vp.id_equipeSport"),
-								results.getFloat("vp.note_vp"),
-								results.getString("vp.annee_vp")
+								results.getFloat("vp.note_vp")
 								));
 						pratiquer.setEquipesport(new EquipeSport(
 								results.getString("sport.id_sport"),

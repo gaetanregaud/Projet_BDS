@@ -93,7 +93,7 @@
    						<input type="hidden" name="type" value="newEquipe"/>
     					<label for="id_sport">Sport</label>
     					<select class="id_sport" name="id_sport">
-    						<c:forEach var="sport" items="${lisports}">
+    						<c:forEach var="sport" items="${listeSports}">
     							<option value="${sport.id_sport}">${sport.nom_sport}</option>
     						</c:forEach>
     					</select></br>
@@ -116,7 +116,7 @@
     					<input type="hidden" name="type" value="suprEquipe"/>
     					<label for="id_equipeSport">Sport</label>
     					<select id="id_equipeSport" name="id_equipeSport">
-    						<c:forEach var="sport" items="${lisports}">
+    						<c:forEach var="sport" items="${listeSports}">
     							<optgroup label="${sport.nom_sport}">
     								<c:forEach var="equipeSport" items="${listeEquipeSport}">
 	    								<c:if test="${sport.id_sport == equipeSport.id_sport}">
@@ -137,7 +137,7 @@
     					<input type="hidden" name="type" value="suprSport"/>
     					<label for="id_sport">Sport</label>
     					<select id="id_sport" name="id_sport">
-    						<c:forEach var="sport" items="${lisports}">
+    						<c:forEach var="sport" items="${listeSports}">
 	    						<option value="${sport.id_sport}">${sport.nom_sport}</option>
     						</c:forEach>
     					</select></br>
@@ -152,7 +152,7 @@
     					<input type="hidden" name="type" value="modifVP"/>
     					<label for="modifequipesport">Sport</label>
     					<select id="modifequipesport" name="modifequipesport">
-    						<c:forEach var="sport" items="${lisports}">
+    						<c:forEach var="sport" items="${listeSports}">
     							<optgroup label="${sport.nom_sport}">
     								<c:forEach var="equipeSport" items="${listeEquipeSport}">
 	    								<c:if test="${sport.id_sport == equipeSport.id_sport}">

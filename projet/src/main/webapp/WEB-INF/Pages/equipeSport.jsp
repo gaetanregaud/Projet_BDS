@@ -39,6 +39,7 @@
     	</div>
     	<div id="presentation_equipesport">
    			<h4>Présentation de l'Association Sportive</h4>
+   			<div id="fleche"></div>
    			<p id="presentation">${equipeSportVp.equipesport.description_equipeSport}<p>
    			<c:if test="${user_id == equipeSportVp.id_etudiant && user_type.equals('vp')}">
    				<input type="button"value="modifier"/>
