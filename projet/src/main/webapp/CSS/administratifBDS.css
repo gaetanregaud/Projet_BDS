@@ -26,20 +26,13 @@ body
 	font-size : 30px;
 }
 
-#sports_vp
+#admini_etudiantNotOK, #recherche
 {
 	position : relative;
 	float : left;
 	margin-top : 10px;
 	margin-left : 5px;
 	width: 670px;
-}
-
-#listeSport_Vp
-{
-	position : relative;
-	float : left;
-	margin-left: 5px;
 }
 
 .infoEtudiant
@@ -66,8 +59,11 @@ body
 
 #administratifBDS table
 {
+	position : relative;
+	float : left;
 	border-collapse: collapse;
 	margin-top : 10px;
+	margin-left : 10px;
 }
 #administratifBDS td
 {
@@ -84,6 +80,23 @@ body
 #administratifBDS tbody tr:nth-child(odd)
 {
 	background-color: silver;
+}
+
+#rech_infoEtudiant
+{
+	position : relative;
+	float : left;
+	margin-top : 5px;
+	margin-left : 10px;
+	width : 350px;
+}
+
+#rech_photoEtudiant
+{
+	position : relative;
+	float : right;
+	margin-top : 10px;
+	margin-right : 10px;
 }
 
 .info

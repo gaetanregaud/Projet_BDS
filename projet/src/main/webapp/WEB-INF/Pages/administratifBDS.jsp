@@ -26,10 +26,10 @@
 			<%@ include file="barremenuBDS.jsp" %>
     		</aside>
     		<h3>Administratif</h3>
-    		<div id="sports_vp">
+    		<div id="admini_etudiantNotOK">
     			<fieldset>
     				<legend>Liste des étudiants n'étant pas à jour</legend>
-    				<div id="listeSport_Vp">
+    				<div id="admini_listeEtudiantNotOK">
 	    				<table>
 	    					<thead>
 	    						<tr>
@@ -56,16 +56,47 @@
     						<div class="infoEtudiant" id="info${etudiant.identifiant}">
     							<h5>${etudiant.identifiant}</h5>
     							<p>
-    								Nom : ${etudiant.nom}</br>
-    								Prénom : ${etudiant.prenom}</br>
-    								Sport : </br>
-    								Tel : ${etudiant.telephone}</br>
+    								Nom : ${etudiant.nom}<br/>
+    								Prénom : ${etudiant.prenom}<br/>
+    								Sport : <br/>
+    								Tel : ${etudiant.telephone}<br/>
     								Mail : ${etudiant.mail}
     							</p>
     						</div>
     					</c:forEach>
     				</div>
     			</fieldset>
+    		</div>
+    		<div id="recherche">
+    			<div id="champs_recherche">
+		   			<fieldset>
+		   				<legend>Recherche Etudiant(e)</legend>
+		   				<form>
+		   					<label for="recherche_etudiant">Rechercher un(e) étudiant(e) : </label>
+		   					<input type="search" id="recherche_etudiant" name="recherche_etudiant" placeholder="h10048"/>
+		   					<input type="button" id="btn_rechercheEtudiant" value="Rechercher"/><br/>
+		   				</form>
+		   			</fieldset>
+    			</div>
+    			<div id="resultat_recherche">
+   					<fieldset>
+   						<legend>Info Etudiant </legend>
+   						<div id="rech_infoEtudiant">
+							<p>Identifiant : <span id="rech_id"></span></p>
+							<p>Nom : <span id="rech_nom"></span></p>
+							<p>Prénom : <span id="rech_prenom"></span></p>
+							<p>Tél : <span id="rech_tel"></span></p>
+							<p>Mail : <span id="rech_mail"></span></p>
+							<p>Classe : <span id="rech_classe"></span></p>
+							<p>Cotisation : <span id="rech_cotis"></span></p>
+							<p>Certificat : <span id="rech_certif"></span></p>
+							<p>Licence : <span id="rech_licence"></span></p>
+    					</div>
+   						<div id="rech_photoEtudiant">
+			    			<img src="" id="rech_photo" width="250px" height="250px"/>
+   						</div>
+    				</fieldset>
+    			</div>
     		</div>
     	</c:if>
     </section>

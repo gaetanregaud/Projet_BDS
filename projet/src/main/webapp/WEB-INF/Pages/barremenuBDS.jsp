@@ -22,8 +22,8 @@
         </li>
         <li><a href="administratifbds" class="titre">Administratif</a>
         	<ul>
-    			<li class="ss_titre">Liste des étudiants pas à jour</li>
-    			<li class="ss_titre">Recherche</li>
+    			<li class="ss_titre" id="affi_listeEtudiantNotOK">Liste des étudiants pas à jour</li>
+    			<li class="ss_titre" id="rechercher_etudiant">Recherche</li>
     		</ul>
         </li>
 	</ul>

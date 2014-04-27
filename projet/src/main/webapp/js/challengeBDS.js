@@ -33,7 +33,7 @@ $(document).ready(function() {
 				pays:$("#ajoupays").val()
 			}
 		}).done(function(data){
-			var select = document.getElementById("lieu");
+			var select = document.getElementById("ajoulieu");
 			var value = data.id;
 			var nom = data.nom;
 			select.options[select.options.length] = new Option(nom, value);
@@ -41,6 +41,29 @@ $(document).ready(function() {
 			$(".adresses").show();
 			$(".newadresse").hide();
 			$(".ajouterChall").show();	
+		});
+	});
+	
+	$("#btnModif_ajouterAdr").click(function(){
+		$.ajax({
+			url:"adresse",
+			type:"POST",
+			data:{nom:$("#modifnom").val(),
+				num:$("#modifnum").val(),
+				rue:$("#modifrue").val(),
+				cp:$("#modifcp").val(),
+				ville:$("#modifville").val(),
+				pays:$("#modifpays").val()
+			}
+		}).done(function(data){
+			var select = document.getElementById("modiflieu");
+			var value = data.id;
+			var nom = data.nom;
+			select.options[select.options.length] = new Option(nom, value);
+			select.options[select.options.length-1].selected = true;
+			$(".adresses").show();
+			$(".newadresse").hide();
+			$(".btn_modifChallenge").show();	
 		});
 	});
 	
@@ -162,6 +185,14 @@ $(document).ready(function() {
 			document.getElementById("modifdate_challenge").value = date;
 			document.getElementById("modifheure_challenge").value = heure;
 			document.getElementById("modifdescription").value = data.description_challenge;
+			var id_adr = data.adresse.id;
+			var adresses = document.getElementById("modiflieu");
+			for(var i=0; i<adresses.length; i++){
+				adresses.options[i].selected = false;
+				if(adresses.options[i].value == id_adr){
+					adresses.options[i].selected = true;
+				}
+			}
 		});
 	});
 	
@@ -184,7 +215,7 @@ $(document).ready(function() {
 				document.getElementById("ajounom_challenge").value = data.nom_challenge;
 				document.getElementById("ajoudescription").value = data.description_challenge;
 				var id_adr = data.adresse.id;
-				var adresses = document.getElementById("lieu");
+				var adresses = document.getElementById("ajoulieu");
 				for(var i=0; i<adresses.length; i++){
 					adresses.options[i].selected = false;
 					if(adresses.options[i].value == id_adr){

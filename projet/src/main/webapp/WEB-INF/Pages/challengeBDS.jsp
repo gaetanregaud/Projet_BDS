@@ -140,8 +140,8 @@
 		    				<div class="adresses">
 			    				<fieldset>
 			    					<legend>Adresse</legend>
-			    						<label for="lieu">Lieu</label>
-			    						<select name="lieu" id="lieu">
+			    						<label for="ajoulieu">Lieu</label>
+			    						<select name="ajoulieu" id="ajoulieu">
 			    							<c:forEach var="adresse" items="${adresses}">
 			    								<option value="${adresse.id}" >${adresse.nom}</option>
 			    							</c:forEach>
@@ -167,7 +167,7 @@
 				    				<input type="text" name="ajouville" id="ajouville" required="required"/><br />
 				    				<label for="pays">Pays</label>
 				    				<input type="text" name="ajouville" id="ajoupays" required="required"/><br />
-				    				<input type="submit"  id="btnAjou_ajouterAdr" value="Valider"/>
+				    				<input type="button"  id="btnAjou_ajouterAdr" value="Valider"/>
 				    				<input type="button"  class="retour" value="Retour"/>
 				    			</form>
 				    		</fieldset>
@@ -237,19 +237,19 @@
 		    			<fieldset>
 			    			<legend>Adresse</legend>
 			    			<form>
-		    					<label for="nom">Nom du Site</label>
-			    				<input type="text" name="nom" id="nom" required="required"/><br />
-		    					<label for="num">Numéro</label>
-			    				<input type="text" name="num" id="num" required="required"/><br />
-			    				<label for="rue">Rue</label>
-			    				<input type="text" name="rue" id="rue" required="required"/><br />
-			    				<label for="cp">Code Postal</label>
-			    				<input type="text" name="cp" id="cp" required="required"/><br />
-			    				<label for="ville">Ville</label>
-			    				<input type="text" name="ville" id="ville" required="required"/><br />
-			    				<label for="pays">Pays</label>
-			    				<input type="text" name="pays" id="pays" required="required"/><br />
-			    				<input type="button"  class="ajouterAdr" value="Valider"/>
+		    					<label for="modifnom">Nom du Site</label>
+			    				<input type="text" name="modifnom" id="modifnom" required="required"/><br />
+		    					<label for="modifnum">Numéro</label>
+			    				<input type="text" name="modifnum" id="modifnum" required="required"/><br />
+			    				<label for="modifrue">Rue</label>
+			    				<input type="text" name="modifrue" id="modifrue" required="required"/><br />
+			    				<label for="modifcp">Code Postal</label>
+			    				<input type="text" name="modifcp" id="modifcp" required="required"/><br />
+			    				<label for="modifville">Ville</label>
+			    				<input type="text" name="modifville" id="modifville" required="required"/><br />
+			    				<label for="modifpays">Pays</label>
+			    				<input type="text" name="modifpays" id="modifpays" required="required"/><br />
+			    				<input type="button"  id="btnModif_ajouterAdr" value="Valider"/>
 			    				<input type="button"  class="retour" value="Retour"/>
 			    			</form>
 			    		</fieldset>

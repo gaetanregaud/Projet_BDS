@@ -1,6 +1,20 @@
 $(document).ready(function() {
-
 	
+	
+	$("#admini_etudiantNotOK").show();
+	$("#recherche").hide();
+	
+	$("#affi_listeEtudiantNotOK").click(function(){
+		$("#admini_etudiantNotOK").show();
+		$("#recherche").hide();
+	});
+	
+	$("#rechercher_etudiant").click(function(){
+		$("#admini_etudiantNotOK").hide();
+		$("#recherche").show();
+		$("#resultat_recherche").hide();
+	});
+
 	
 	$(".info").click(function(){
 		$(".infoEtudiant").hide();
@@ -8,89 +22,34 @@ $(document).ready(function() {
 		$("#info"+id).show();
 	});
 	
-	$("#liste_sport").click(function(){
-		$(".infoVP").hide();
-		$("#newSport").hide();
-		$("#newEquipe").hide();
-		$("#suprEquipe").hide();
-		$("#suprSport").hide();
-		$("#modifVP").hide();
-		$("#sports_vp").show();
+	$("#btn_rechercheEtudiant").click(function(){
+			$("#resultat_recherche").show();
+			$.ajax({
+				url:"administratifbds",
+				type:"post",
+				data:{
+					type:"recherche_etudiant",
+					id_etudiant:$("#recherche_etudiant").val()
+				}
+			}).done(function(data){
+				document.getElementById("rech_id").innerHTML = data.identifiant;
+				document.getElementById("rech_nom").innerHTML = data.nom;
+				document.getElementById("rech_prenom").innerHTML = data.prenom;
+				document.getElementById("rech_tel").innerHTML = data.telephone;
+				document.getElementById("rech_mail").innerHTML = data.mail;
+				document.getElementById("rech_classe").innerHTML = data.classe;
+				document.getElementById("rech_cotis").innerHTML = data.cotisation;
+				document.getElementById("rech_certif").innerHTML = data.certificat;
+				var photo = data.photo;
+				if(photo == ""){
+					document.getElementById("rech_photo").src = "IMAGE/photo/etudiant/admin.jpg";
+				}
+				else{
+					document.getElementById("rech_photo").src = "IMAGE/photo/etudiant/"+photo+".jpg";
+				}
+			});
 	});
 	
-	$("#ajou_sport").click(function(){
-		$(".infoVP").hide();
-		$("#sports_vp").hide();
-		$("#newEquipe").hide();
-		$("#suprEquipe").hide();
-		$("#suprSport").hide();
-		$("#modifVP").hide();
-		$("#newSport").show();
-	});
 	
-	$("#ajou_equipe").click(function(){
-		$(".infoVP").hide();
-		$("#sports_vp").hide();
-		$("#newSport").hide();
-		$("#suprEquipe").hide();
-		$("#suprSport").hide();
-		$("#modifVP").hide();
-		$("#newEquipe").show();
-	});
-	
-	$("#supr_equipe").click(function(){
-		$(".infoVP").hide();
-		$("#sports_vp").hide();
-		$("#newSport").hide();
-		$("#suprSport").hide();
-		$("#modifVP").hide();
-		$("#suprEquipe").show();
-		$("#newEquipe").hide();
-	});
-	
-	$("#supr_sport").click(function(){
-		$(".infoVP").hide();
-		$("#sports_vp").hide();
-		$("#newSport").hide();
-		$("#suprSport").show();
-		$("#suprEquipe").hide();
-		$("#modifVP").hide();
-		$("#newEquipe").hide();
-	});
-	
-	$("#modif_sport").click(function(){
-		$(".infoVP").hide();
-		$("#sports_vp").hide();
-		$("#newSport").hide();
-		$("#suprSport").hide();
-		$("#suprEquipe").hide();
-		$("#modifVP").show();
-		$("#newEquipe").hide();
-	});
-	
-	$("#plus").click(function(){
-		$("#sports").hide();
-		$("#ajousport").show();
-	});
-	
-	$("#vp").keyup(function(){
-		$.ajax({
-			url:"rechercheridetudiant",
-			type:"POST",
-			data:{vp:$("#vp").val()
-			}
-		}).done(function(data){
-			if(data == 'oui'){
-				$("#oui").show();
-				$("#non").hide();
-				$("#ok").show();
-			}
-			else{
-				$("#non").show();
-				$("#oui").hide();
-				$("#ok").hide();
-			}
-		});
-	});
 	
 });

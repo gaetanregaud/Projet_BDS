@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import bds.devweb.metier.Manager;
 import bds.devweb.model.Etudiant;
 import bds.devweb.model.Sport;
@@ -39,7 +41,16 @@ public class AdministratifBDSServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String type = request.getParameter("type");
+		if(type.equals("recherche_etudiant")){
+			String id_etudiant = request.getParameter("id_etudiant");
+			Etudiant etudiant = Manager.getInstance().getEtudiant(id_etudiant);
+			Gson gson = new Gson();
+			String etudiantJson = gson.toJson(etudiant);
+			response.setContentType("application/json");
+			response.getWriter().write(etudiantJson);
+			System.out.println("Ca marche");
+		}
 	}
 
 }
