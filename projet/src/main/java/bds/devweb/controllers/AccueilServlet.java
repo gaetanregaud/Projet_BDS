@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import bds.devweb.metier.Manager;
 import bds.devweb.model.Challenge;
 import bds.devweb.model.DateCalendrier;
+import bds.devweb.model.EquipeSport;
 import bds.devweb.model.Sport;
 
 
@@ -30,8 +31,10 @@ public class AccueilServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Listes de la barre de menu du header
-			List<Sport> lisports = Manager.getInstance().listerLiSports();
-			request.setAttribute("lisports", lisports);
+			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+			request.setAttribute("listeSports", listeSports);
+			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
 		// Données du Calendrier
 			Date date = new Date();
 			int mois = date.getMonth();

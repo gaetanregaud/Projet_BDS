@@ -24,10 +24,18 @@
                                 <li>Pôle Voile</li>
                             </ul>
                         </li>
-                        <li id="listemenu-item-sports">Sports
+                        <li id="listemenu-item-sports" class="${pageSelectionnee == 'sports' ? 'active' : ''}">Sports
                             <ul>
-                                <c:forEach var="lisport" items="${lisports}">
-                                	<li>${lisport.nom_sport}</li>
+                                <c:forEach var="sport" items="${listeSports}">
+                                	<li>${sport.nom_sport}
+                                		<ul>
+                                			<c:forEach var="equipeSport" items="${listeEuqipeSport}">
+                                				<c:if test="${equipeSport.id_sport == sport.id_sport}">
+                                					<li><a href="equipesport">${equipeSport.nom_sport} (${equipeSport.nom_equipeSport})</a></li>
+                                				</c:if>
+                                			</c:forEach>
+                                		</ul>
+                                	</li>
                                 </c:forEach>
                             </ul>
                         </li>

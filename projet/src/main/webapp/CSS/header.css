@@ -65,6 +65,7 @@
     padding : 5px;
     border-bottom: 1px dashed black;
     border-right: none;
+    height : 20px;
 }
 
  #listemenu ul
@@ -73,12 +74,33 @@
     position : absolute;
     margin-top: 7px;
     margin-left: -14px;
-    width : 200px;
+    width : 180px;
     background-color: white;
     color : black;
-    padding-left : 15px;
-    padding-right : 15px;
+    padding-left : 0px;
+    padding-right : 0px;
     display : none;    
+}
+
+#listemenu ul li ul
+{
+	z-index : 1;
+    position : inherit;
+    margin-top: -23px;
+    margin-left: 185px;
+    width : 180px;
+    background-color: Black;
+    color : white;
+    padding-left : 0px;
+    padding-right : 0px;
+    display : none;
+}
+#listemenu ul li ul li
+{
+	z-index : 3;
+	position : inherit;
+	border-bottom: 1px dashed white;
+    display : none;
 }
 
 a
@@ -106,5 +128,21 @@ a
 #listemenu li:hover ul
 {
     color:blue;
+    display : block;
+}
+
+#listemenu ul li:hover
+{
+    color:white;
+    background-color: black;
+    border-bottom: 1px dashed white;
+    display : block;
+}
+
+
+#listemenu ul li:hover ul li
+{
+    color:white;
+    background-color: black;
     display : block;
 }

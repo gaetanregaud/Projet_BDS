@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import bds.devweb.metier.Manager;
+import bds.devweb.model.EquipeSport;
 import bds.devweb.model.Etudiant;
 import bds.devweb.model.Sport;
 
@@ -28,9 +29,10 @@ public class AdministratifBDSServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Listes de la barre de menu du header
-			List<Sport> lisports = Manager.getInstance().listerLiSports();
-			request.setAttribute("lisports", lisports);
-
+			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+			request.setAttribute("listeSports", listeSports);
+			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
 		//Donn��es relatives �� la page
 			List<Etudiant> listeEtudiantNotOK = Manager.getInstance().listerEtudiantNotOk();
 			request.setAttribute("listeEtudiantNotOK", listeEtudiantNotOK);
