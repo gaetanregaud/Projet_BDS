@@ -31,7 +31,7 @@
                                 		<ul>
                                 			<c:forEach var="equipeSport" items="${listeEuqipeSport}">
                                 				<c:if test="${equipeSport.id_sport == sport.id_sport}">
-                                					<li><a href="equipesport">${equipeSport.nom_sport} (${equipeSport.nom_equipeSport})</a></li>
+                                					<li><a href="equipesport?id=${equipeSport.id_equipeSport}">${equipeSport.nom_sport} (${equipeSport.nom_equipeSport})</a></li>
                                 				</c:if>
                                 			</c:forEach>
                                 		</ul>

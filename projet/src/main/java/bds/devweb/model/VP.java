@@ -14,7 +14,7 @@ public class VP extends Etudiant{
 		this.id_equipeSport = id_equipeSport;
 		this.note_vp = note_vp;
 		this.annee_vp = annee_vp;
-		equipesport = new EquipeSport("", "", "", "");
+		equipesport = new EquipeSport("", "", "", "", "");
 	}
 
 	public String getId_etudiant() {

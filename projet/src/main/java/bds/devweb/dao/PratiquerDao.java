@@ -47,7 +47,8 @@ public class PratiquerDao {
 								results.getString("sport.id_sport"),
 								results.getString("sport.nom_sport"),
 								results.getString("equipe_sport.id_equipeSport"),
-								results.getString("equipe_sport.nom_equipeSport")
+								results.getString("equipe_sport.nom_equipeSport"),
+								results.getString("description_equipeSport")
 								));
 				listePratiquerforEtudiant.add(pratiquer);
 			}

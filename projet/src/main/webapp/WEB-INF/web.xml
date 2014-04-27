@@ -168,4 +168,14 @@
     <servlet-name>AdresseServlet</servlet-name>
     <url-pattern>/adresse</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EquipeSportServlet</display-name>
+    <servlet-name>EquipeSportServlet</servlet-name>
+    <servlet-class>bds.devweb.controllers.EquipeSportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EquipeSportServlet</servlet-name>
+    <url-pattern>/equipesport</url-pattern>
+  </servlet-mapping>
 </web-app>

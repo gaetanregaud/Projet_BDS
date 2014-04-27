@@ -14,7 +14,7 @@ public class Pratiquer {
 		this.note = note;
 		etudiant = new Etudiant("", "", "", "", "", "", "", false, false, "");
 		vp = new VP("", "", "", "", "", "", "", false, false, "", "", 0, "");
-		equipesport = new EquipeSport("", "", "", "");
+		equipesport = new EquipeSport("", "", "", "", "");
 	}
 
 	public String getId_etudiant() {

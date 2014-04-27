@@ -27,9 +27,10 @@ public class SportBDSServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Listes de la barre de menu du header
-			List<Sport> lisports = Manager.getInstance().listerLiSports();
-			request.setAttribute("lisports", lisports);
-
+			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+			request.setAttribute("listeSports", listeSports);
+			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
 		//Donn��es relatives �� la page
 			List<VP> listevps = Manager.getInstance().listerVP();
 			request.setAttribute("listevps", listevps);

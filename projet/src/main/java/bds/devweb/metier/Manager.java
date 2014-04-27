@@ -232,6 +232,10 @@ public class Manager {
 	public void modifEtudiant(Etudiant etudiant){
 		etudiantDao.modifEtudiant(etudiant);
 	}
+	
+	public VP getEquipeSportAndVP (String id_equipeSport){
+		return equipesportDao.getEquipeSportAndVP(id_equipeSport);
+	}
 	//Calendrier
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
 		return calendrierDao.calendrier(annee1, annee2);
