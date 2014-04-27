@@ -12,8 +12,8 @@ public class Pratiquer {
 		this.id_etudiant = id_etudiant;
 		this.id_equipeSport = id_equipeSport;
 		this.note = note;
-		etudiant = new Etudiant("", "", "", "", "", "", "", false, false);
-		vp = new VP("", "", "", "", "", "", "", false, false, "", 0, "");
+		etudiant = new Etudiant("", "", "", "", "", "", "", false, false, "");
+		vp = new VP("", "", "", "", "", "", "", false, false, "", "", 0, "");
 		equipesport = new EquipeSport("", "", "", "");
 	}
 

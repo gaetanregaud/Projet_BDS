@@ -229,6 +229,9 @@ public class Manager {
 	public Adresse getAdresseByNom(String nom_adresse){
 		return adresseDao.getAdresseByNom(nom_adresse);
 	}
+	public void modifEtudiant(Etudiant etudiant){
+		etudiantDao.modifEtudiant(etudiant);
+	}
 	//Calendrier
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
 		return calendrierDao.calendrier(annee1, annee2);

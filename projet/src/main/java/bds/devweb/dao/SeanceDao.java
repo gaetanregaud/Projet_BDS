@@ -38,7 +38,8 @@ public class SeanceDao {
 						results.getString("etudiant.mail_etudiant"),
 						results.getString("etudiant.photo_etudiant"),
 						results.getBoolean("etudiant.cotisation_etudiant"),
-						results.getBoolean("etudiant.certificat_etudiant")
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant")
 						));
 				listeNumeroSeancebyEquipeSportby.add(seance);
 			}
@@ -78,7 +79,8 @@ public class SeanceDao {
 						results.getString("etudiant.mail_etudiant"),
 						results.getString("etudiant.photo_etudiant"),
 						results.getBoolean("etudiant.cotisation_etudiant"),
-						results.getBoolean("etudiant.certificat_etudiant")
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant")
 						));
 				listeSeancebyNumforEquipeSport.add(seance);
 			}
@@ -118,7 +120,8 @@ public class SeanceDao {
 						results.getString("etudiant.mail_etudiant"),
 						results.getString("etudiant.photo_etudiant"),
 						results.getBoolean("etudiant.cotisation_etudiant"),
-						results.getBoolean("etudiant.certificat_etudiant")
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant")
 						));
 				listeSeancebyIdforEquipeSport.add(seance);
 			}

@@ -11,8 +11,9 @@ public class Etudiant {
 	private String photo;
 	private boolean cotisation;
 	private boolean certificat;
+	private String licence;
 	
-	public Etudiant (String identifiant, String nom, String prenom, String classe, String telephone, String mail, String photo, boolean cotisation, boolean certificat){
+	public Etudiant (String identifiant, String nom, String prenom, String classe, String telephone, String mail, String photo, boolean cotisation, boolean certificat, String licence){
 		this.identifiant = identifiant;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -22,6 +23,7 @@ public class Etudiant {
 		this.photo = photo;
 		this.cotisation = cotisation;
 		this.certificat = certificat;
+		this.licence = licence;
 	}
 
 	public String getIdentifiant() {
@@ -94,6 +96,14 @@ public class Etudiant {
 
 	public void setCertificat(boolean certificat) {
 		this.certificat = certificat;
+	}
+
+	public String getLicence() {
+		return licence;
+	}
+
+	public void setLicence(String licence) {
+		this.licence = licence;
 	}
 	
 	

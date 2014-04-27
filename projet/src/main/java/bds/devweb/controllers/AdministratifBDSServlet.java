@@ -51,6 +51,24 @@ public class AdministratifBDSServlet extends HttpServlet {
 			response.getWriter().write(etudiantJson);
 			System.out.println("Ca marche");
 		}
+		if(type.equals("modif_infoEtudiant")){
+			String id_etudiant = request.getParameter("id_etudiant");
+			String cotisation = request.getParameter("cotisation");
+			String certificat = request.getParameter("certificat");
+			String licence = request.getParameter("licence");
+			Boolean cotis = false;
+			if(cotisation.equals("oui")){
+				cotis = true;
+			}
+			Boolean certif = false;
+			if(certificat.equals("oui")){
+				certif = true;
+			}
+			Etudiant etudiant = Manager.getInstance().getEtudiant(id_etudiant);
+			Etudiant etudiant1 = new Etudiant(id_etudiant, etudiant.getNom(), etudiant.getPrenom(), etudiant.getClasse(), etudiant.getTelephone(), etudiant.getMail(), etudiant.getPhoto(), cotis, certif, licence);
+			Manager.getInstance().modifEtudiant(etudiant1);
+			System.out.println("Ca marche");
+		}
 	}
 
 }

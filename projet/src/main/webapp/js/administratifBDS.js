@@ -38,8 +38,30 @@ $(document).ready(function() {
 				document.getElementById("rech_tel").innerHTML = data.telephone;
 				document.getElementById("rech_mail").innerHTML = data.mail;
 				document.getElementById("rech_classe").innerHTML = data.classe;
-				document.getElementById("rech_cotis").innerHTML = data.cotisation;
-				document.getElementById("rech_certif").innerHTML = data.certificat;
+				document.getElementById("rech_licence").value = data.licence;
+				document.getElementById("post_id").value = data.identifiant;
+				var cotisation = "non";
+				if(data.cotisation == true){
+					cotisation = "oui";
+				}
+				var certificat = "non";
+				if(data.certificat == true){
+					certificat = "oui";
+				}
+				var selectCertif = document.getElementById("rech_certif");
+				var selectCotis = document.getElementById("rech_cotis");
+				for(var i=0; i<selectCertif.length; i++){
+					selectCertif.options[i].selected = false;
+					if(selectCertif.options[i].value == certificat){
+						selectCertif.options[i].selected = true;
+					}
+				}
+				for(var i=0; i<selectCotis.length; i++){
+					selectCotis.options[i].selected = false;
+					if(selectCotis.options[i].value == cotisation){
+						selectCotis.options[i].selected = true;
+					}
+				}
 				var photo = data.photo;
 				if(photo == ""){
 					document.getElementById("rech_photo").src = "IMAGE/photo/etudiant/admin.jpg";
@@ -48,6 +70,20 @@ $(document).ready(function() {
 					document.getElementById("rech_photo").src = "IMAGE/photo/etudiant/"+photo+".jpg";
 				}
 			});
+	});
+	
+	$("#btn_modi_infoEtudiant").click(function(){
+		$.ajax({
+			url:"administratifbds",
+			type:"post",
+			data:{
+				type:"modif_infoEtudiant",
+				id_etudiant:$("#post_id").val(),
+				cotisation:$("#rech_cotis").val(),
+				certificat:$("#rech_certif").val(),
+				licence:$("#rech_licence").val()
+			}
+		});
 	});
 	
 	

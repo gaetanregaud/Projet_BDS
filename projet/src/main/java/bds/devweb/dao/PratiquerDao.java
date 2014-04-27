@@ -38,6 +38,7 @@ public class PratiquerDao {
 								results.getString("etudiant.photo_etudiant"),
 								results.getBoolean("etudiant.cotisation_etudiant"),
 								results.getBoolean("etudiant.certificat_etudiant"),
+								results.getString("licence_etudiant"),
 								results.getString("vp.id_equipeSport"),
 								results.getFloat("vp.note_vp"),
 								results.getString("vp.annee_vp")
@@ -83,7 +84,8 @@ public class PratiquerDao {
 								results.getString("etudiant.mail_etudiant"),
 								results.getString("etudiant.photo_etudiant"),
 								results.getBoolean("etudiant.cotisation_etudiant"),
-								results.getBoolean("etudiant.certificat_etudiant")
+								results.getBoolean("etudiant.certificat_etudiant"),
+								results.getString("licence_etudiant")
 								));
 				listerPratiquantbyVP.add(pratiquer);
 			}
@@ -120,7 +122,8 @@ public class PratiquerDao {
 								results.getString("etudiant.mail_etudiant"),
 								results.getString("etudiant.photo_etudiant"),
 								results.getBoolean("etudiant.cotisation_etudiant"),
-								results.getBoolean("etudiant.certificat_etudiant")
+								results.getBoolean("etudiant.certificat_etudiant"),
+								results.getString("licence_etudiant")
 								));
 				listerPratiquantNotebyVP.add(pratiquer);
 			}

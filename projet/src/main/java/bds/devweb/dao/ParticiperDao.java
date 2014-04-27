@@ -38,7 +38,8 @@ public class ParticiperDao {
 						results.getString("etudiant.mail_etudiant"),
 						results.getString("etudiant.photo_etudiant"),
 						results.getBoolean("etudiant.cotisation_etudiant"),
-						results.getBoolean("etudiant.certificat_etudiant")));
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant")));
 				participer.setChallenge(new Challenge(
 						results.getString("challenge.id_challenge"),
 						results.getString("challenge.nom_challenge"),
@@ -131,7 +132,8 @@ public class ParticiperDao {
 						results.getString("etudiant.mail_etudiant"),
 						results.getString("etudiant.photo_etudiant"),
 						results.getBoolean("etudiant.cotisation_etudiant"),
-						results.getBoolean("etudiant.certificat_etudiant")));
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant")));
 				participer.getChallenge().setAdresse(new Adresse(
 						results.getString("adresse.id_adr"),
 						results.getString("adresse.site_adr"),

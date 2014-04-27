@@ -82,15 +82,28 @@
    					<fieldset>
    						<legend>Info Etudiant </legend>
    						<div id="rech_infoEtudiant">
+   							<form>
 							<p>Identifiant : <span id="rech_id"></span></p>
 							<p>Nom : <span id="rech_nom"></span></p>
 							<p>Prénom : <span id="rech_prenom"></span></p>
 							<p>Tél : <span id="rech_tel"></span></p>
 							<p>Mail : <span id="rech_mail"></span></p>
 							<p>Classe : <span id="rech_classe"></span></p>
-							<p>Cotisation : <span id="rech_cotis"></span></p>
-							<p>Certificat : <span id="rech_certif"></span></p>
-							<p>Licence : <span id="rech_licence"></span></p>
+							<label for="rech_cotis" >Cotisation : </label>
+							<select id="rech_cotis" name="rech_cotis">
+								<option value="oui">Oui</option>
+								<option value="non">Non</option>
+							</select><br/><br/>
+							<label for="rech_certif" >Cotisation : </label>
+							<select id="rech_certif" name="rech_certif">
+								<option value="oui">Oui</option>
+								<option value="non">Non</option>
+							</select><br/><br/>
+							<label for="rech_licence">Licence : </label>
+							<input type="text" id="rech_licence" name="rech_licence"/><br/><br/>
+							<input type="hidden" id="post_id"/> 
+							<input type="button" id="btn_modi_infoEtudiant" value="Modifier"/>
+							</form>
     					</div>
    						<div id="rech_photoEtudiant">
 			    			<img src="" id="rech_photo" width="250px" height="250px"/>

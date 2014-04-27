@@ -12,7 +12,7 @@ public class Participer {
 		this.id_etudiant = id_etudiant;
 		this.id_challenge = id_challenge;
 		this.presence = presence;
-		etudiant = new Etudiant("", "", "", "", "", "", "", false, false);
+		etudiant = new Etudiant("", "", "", "", "", "", "", false, false, "");
 		challenge = new Challenge("", "", null, null, "", "");
 	}
 

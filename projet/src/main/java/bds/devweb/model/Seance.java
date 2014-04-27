@@ -18,7 +18,7 @@ public class Seance {
 		this.id_equipeSport = id_equipeSport;
 		this.date_seance = date_seance;
 		this.presence_seance = presence_seance;
-		etudiant = new Etudiant("", "", "", "", "", "", "", false, false);
+		etudiant = new Etudiant("", "", "", "", "", "", "", false, false, "");
 	}
 
 	public String getId_seance() {

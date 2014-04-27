@@ -82,7 +82,8 @@ public class EtudiantDao {
 						results.getString("mail_etudiant"),
 						results.getString("photo_etudiant"),
 						results.getBoolean("cotisation_etudiant"),
-						results.getBoolean("certificat_etudiant"));
+						results.getBoolean("certificat_etudiant"),
+						results.getString("licence_etudiant"));
 			}
 			//Fermer la connexion
 			results.close();
@@ -114,7 +115,8 @@ public class EtudiantDao {
 						results.getString("mail_etudiant"),
 						results.getString("photo_etudiant"),
 						results.getBoolean("cotisation_etudiant"),
-						results.getBoolean("certificat_etudiant"));
+						results.getBoolean("certificat_etudiant"),
+						results.getString("licence_etudiant"));
 				listeEtudiantByVP.add(etudiant);
 			}
 			//Fermer la connexion
@@ -145,7 +147,8 @@ public class EtudiantDao {
 						results.getString("mail_etudiant"),
 						results.getString("photo_etudiant"),
 						results.getBoolean("cotisation_etudiant"),
-						results.getBoolean("certificat_etudiant"));
+						results.getBoolean("certificat_etudiant"),
+						results.getString("licence_etudiant"));
 				listeEtudiantNotOK.add(etudiant);
 			}
 			//Fermer la connexion
@@ -157,6 +160,32 @@ public class EtudiantDao {
 			e.printStackTrace();
 		}
 		return listeEtudiantNotOK;
+	}
+	
+	public void modifEtudiant(Etudiant etudiant){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("UPDATE etudiant SET nom_etudiant = ?, prenom_etudiant = ?, classe_etudiant = ?, tel_etudiant = ?, mail_etudiant = ?, photo_etudiant = ?, certificat_etudiant = ?, cotisation_etudiant = ?, licence_etudiant = ? WHERE id_etudiant = ?");
+			stmt.setString(1,  etudiant.getNom());
+			stmt.setString(2,  etudiant.getPrenom());
+			stmt.setString(3,  etudiant.getClasse());
+			stmt.setString(4,  etudiant.getTelephone());
+			stmt.setString(5,  etudiant.getMail());
+			stmt.setString(6,  etudiant.getPhoto());
+			stmt.setBoolean(7,  etudiant.isCertificat());
+			stmt.setBoolean(8,  etudiant.isCotisation());
+			stmt.setString(9,  etudiant.getLicence());
+			stmt.setString(10,  etudiant.getIdentifiant());
+			stmt.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Etudiant> listerID_Etudiant(String identifiant){
@@ -177,7 +206,8 @@ public class EtudiantDao {
 						results.getString("mail_etudiant"),
 						results.getString("photo_etudiant"),
 						results.getBoolean("cotisation_etudiant"),
-						results.getBoolean("certificat_etudiant"));
+						results.getBoolean("certificat_etudiant"),
+						results.getString("licence_etudiant"));
 				listeID_Etudiant.add(etudiant);
 			}
 			//Fermer la connexion

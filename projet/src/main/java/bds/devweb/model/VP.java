@@ -8,8 +8,8 @@ public class VP extends Etudiant{
 	private String annee_vp;
 	private EquipeSport equipesport;
 	
-	public VP(String id_etudiant, String nom, String prenom, String classe, String telephone, String mail, String photo, boolean cotisation, boolean certificat, String id_equipeSport, float note_vp, String annee_vp){
-		super(id_etudiant, nom, prenom, classe, telephone, mail, photo, cotisation, certificat);
+	public VP(String id_etudiant, String nom, String prenom, String classe, String telephone, String mail, String photo, boolean cotisation, boolean certificat, String licence, String id_equipeSport, float note_vp, String annee_vp){
+		super(id_etudiant, nom, prenom, classe, telephone, mail, photo, cotisation, certificat, licence);
 		this.id_etudiant = id_etudiant;
 		this.id_equipeSport = id_equipeSport;
 		this.note_vp = note_vp;
