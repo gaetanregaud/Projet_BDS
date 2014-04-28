@@ -154,5 +154,23 @@ public class VPDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void ModifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("UPDATE vp SET note_vp = ? WHERE id_etudiant = ? AND id_equipeSport = ?");
+			stmt.setFloat(1, moyenne);
+			stmt.setString(2,  id_vp);
+			stmt.setString(3,  id_equipeSport);
+			stmt.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
 
 }

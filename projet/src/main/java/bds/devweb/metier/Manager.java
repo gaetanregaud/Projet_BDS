@@ -8,6 +8,7 @@ import bds.devweb.dao.CalendrierDao;
 import bds.devweb.dao.ChallengeDao;
 import bds.devweb.dao.EquipeSportDao;
 import bds.devweb.dao.EtudiantDao;
+import bds.devweb.dao.NoteVPDao;
 import bds.devweb.dao.ParticiperDao;
 import bds.devweb.dao.PratiquerDao;
 import bds.devweb.dao.SeanceDao;
@@ -19,6 +20,7 @@ import bds.devweb.model.Challenge;
 import bds.devweb.model.DateCalendrier;
 import bds.devweb.model.EquipeSport;
 import bds.devweb.model.Etudiant;
+import bds.devweb.model.NoteVP;
 import bds.devweb.model.Participer;
 import bds.devweb.model.Pratiquer;
 import bds.devweb.model.Seance;
@@ -40,6 +42,7 @@ public class Manager {
 	private ChallengeDao challengeDao;
 	private CalendrierDao calendrierDao;
 	private AdresseDao adresseDao;
+	private NoteVPDao notevpDao;
 	
 	public static Manager getInstance(){
 		if(instance == null){
@@ -60,7 +63,7 @@ public class Manager {
 		challengeDao = new ChallengeDao();
 		calendrierDao = new CalendrierDao();
 		adresseDao = new AdresseDao();
-		
+		notevpDao = new NoteVPDao();
 	}
 	
 	//Requ��te pour un ��tudiant
@@ -235,6 +238,18 @@ public class Manager {
 	
 	public VP getEquipeSportAndVP (String id_equipeSport){
 		return equipesportDao.getEquipeSportAndVP(id_equipeSport);
+	}
+	
+	public void ajouterNoteVP(NoteVP notevp){
+		notevpDao.ajouterNoteVP(notevp);
+	}
+	
+	public List<NoteVP> listerNoteVP(String id_vp, String id_equipeSport){
+		return notevpDao.listerNoteVP(id_vp, id_equipeSport);
+	}
+	
+	public void ModifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
+		vpDao.ModifierNoteVP(id_vp, id_equipeSport, moyenne);
 	}
 	//Calendrier
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
