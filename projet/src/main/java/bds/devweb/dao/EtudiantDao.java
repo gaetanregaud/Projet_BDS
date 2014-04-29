@@ -187,38 +187,5 @@ public class EtudiantDao {
 			e.printStackTrace();
 		}
 	}
-	
-	public List<Etudiant> listerID_Etudiant(String identifiant){
-		List<Etudiant> listeID_Etudiant = new ArrayList<Etudiant>();
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("SELECT etudiant.* FROM etudiant WHERE etudiant.id_etudiant LIKE ?");
-			stmt.setString(1,  identifiant);
-			ResultSet results = stmt.executeQuery();
-			while(results.next()){
-				Etudiant etudiant = new Etudiant(
-						results.getString("id_etudiant"),
-						results.getString("nom_etudiant"),
-						results.getString("prenom_etudiant"),
-						results.getString("classe_etudiant"),
-						results.getString("tel_etudiant"),
-						results.getString("mail_etudiant"),
-						results.getString("photo_etudiant"),
-						results.getBoolean("cotisation_etudiant"),
-						results.getBoolean("certificat_etudiant"),
-						results.getString("licence_etudiant"));
-				listeID_Etudiant.add(etudiant);
-			}
-			//Fermer la connexion
-			results.close();
-			stmt.close();
-			connection.close();
-		}
-		catch (SQLException e){
-			e.printStackTrace();
-		}
-		return listeID_Etudiant;
-	}
 				
 }

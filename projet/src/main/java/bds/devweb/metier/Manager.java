@@ -180,10 +180,6 @@ public class Manager {
 	public void ajouterAdresse(Adresse adresse){
 		adresseDao.AjouterAdresse(adresse);
 	}
-
-	public List<Etudiant> listerID_Etudiant(String id_etudiant){
-		return etudiantDao.listerID_Etudiant(id_etudiant);
-	}
 	
 	public List<Etudiant> listerEtudiantNotOk(){
 		return etudiantDao.listerEtudiantNotOK();
