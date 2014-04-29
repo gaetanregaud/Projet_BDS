@@ -4,7 +4,7 @@
 	left: 50%;
 	margin-left: -312.5px;
 	border: 1px solid black;
-	border-radius : 10px;
+	border-radius: 10px;
 	width: 600px;
 	padding: 5px;
 	background-color: green;
@@ -14,8 +14,8 @@
 	position: float;
 	float: left;
 	background-color: white;
-	border-radius : 5px;
-	box-shadow : 3px 3px 3px 1px grey;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px 1px grey;
 	padding: 2px;
 }
 
@@ -55,12 +55,12 @@
 	width: 300px;
 	height: auto;
 	border: 1px solid black;
-	border-radius : 10px;
-	box-shadow : 3px 3px 3px 1px grey;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px 1px grey;
 	margin-left: 5px;
-	padding-top : 3px;
+	padding-top: 3px;
 	background-color: white;
-	display:none;
+	display: none;
 }
 
 .month table td .events {
@@ -85,18 +85,17 @@
 	padding: 0px;
 }
 
-caption
-{
-	color : navy;
+caption {
+	color: navy;
 }
 
-th
-{
-	color : grey;
+th {
+	color: grey;
 }
+
 h1 {
-	margin-top : 2px;
-	margin-bottom : 2px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 	text-align: center;
 	color: navy;
 }

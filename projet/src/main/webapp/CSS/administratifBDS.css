@@ -1,114 +1,103 @@
-body
-{
-    color : #333;
-    background-color: #000;
+body {
+	color: #333;
+	background-color: #000;
 }
 
-#administratifBDS
-{
-    position : absolute;
-    top : 334px;
-    left : 50%;
-    margin-left : -425px;
-    background-color: white;
-    width : 850px;
-    height : auto;
-    padding-bottom: 50px;
+#administratifBDS {
+	position: absolute;
+	top: 334px;
+	left: 50%;
+	margin-left: -425px;
+	background-color: white;
+	width: 850px;
+	height: auto;
+	padding-bottom: 50px;
 }
 
-#administratifBDS h3
-{
-	postion : relative;
-	float : left;
-	margin-top : 5px;
-	margin-left : 250px;
-	margin-bottom : 10px;
-	font-size : 30px;
+#administratifBDS h3 {
+	postion: relative;
+	float: left;
+	margin-top: 5px;
+	margin-left: 250px;
+	margin-bottom: 10px;
+	font-size: 30px;
 }
 
-#admini_etudiantNotOK, #recherche
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
-	margin-left : 5px;
+#admini_etudiantNotOK,#recherche {
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
 	width: 670px;
 }
 
-.infoEtudiant
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
+.infoEtudiant {
+	position: relative;
+	float: left;
+	margin-top: 10px;
 	margin-left: 25px;
-	width : 200px;
-	border : 1px solid black;
-	display : none;
+	width: 200px;
+	border: 1px solid black;
+	display: none;
 }
 
-.infoEtudiant h5
-{
-	margin-top : 0px;
+.infoEtudiant h5 {
+	margin-top: 0px;
 	padding: 2px;
 	text-align: center;
-	border : 1px solid blue;
-	color : white;
-	background-color: navy; 
-	margin-bottom : 0px;
+	border: 1px solid blue;
+	color: white;
+	background-color: navy;
+	margin-bottom: 0px;
 }
 
-#administratifBDS table
-{
-	position : relative;
-	float : left;
+#administratifBDS table {
+	position: relative;
+	float: left;
 	border-collapse: collapse;
-	margin-top : 10px;
-	margin-left : 10px;
+	margin-top: 10px;
+	margin-left: 10px;
 }
-#administratifBDS td
-{
-	border : 1px solid black;
+
+#administratifBDS td {
+	border: 1px solid black;
 	text-align: center;
 	padding-left: 10px;
 	padding-right: 10px;
 }
-#administratifBDS th
-{
+
+#administratifBDS th {
 	background-color: navy;
-	color : white;
+	color: white;
 }
-#administratifBDS tbody tr:nth-child(odd)
-{
+
+#administratifBDS tbody tr:nth-child(odd) {
 	background-color: silver;
 }
 
-#rech_infoEtudiant
-{
-	position : relative;
-	float : left;
-	margin-top : 5px;
-	margin-left : 10px;
-	width : 350px;
+#rech_infoEtudiant {
+	position: relative;
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	width: 350px;
 }
 
-#rech_photoEtudiant
-{
-	position : relative;
-	float : right;
-	margin-top : 10px;
-	margin-right : 10px;
+#rech_photoEtudiant {
+	position: relative;
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
 }
 
-.info
-{
-	cursor : pointer;	
+.info {
+	cursor: pointer;
 }
 
-.oui
-{
-	color : green;
+.oui {
+	color: green;
 }
-.non
-{
-	color : red;
+
+.non {
+	color: red;
 }

@@ -1,130 +1,116 @@
-body
-{
-    color : #333;
-    background-color: #000;
+body {
+	color: #333;
+	background-color: #000;
 }
 
-#challengeBDS
-{
-    position : absolute;
-    top : 334px;
-    left : 50%;
-    margin-left : -425px;
-    background-color: white;
-    width : 850px;
-    height : auto;
-    padding-bottom: 50px;
+#challengeBDS {
+	position: absolute;
+	top: 334px;
+	left: 50%;
+	margin-left: -425px;
+	background-color: white;
+	width: 850px;
+	height: auto;
+	padding-bottom: 50px;
 }
 
-#challengeBDS h3
-{
-	postion : relative;
-	float : left;
-	margin-left : 250px;
+#challengeBDS h3 {
+	postion: relative;
+	float: left;
+	margin-left: 250px;
 }
 
-#plus
-{
-	position : relative;
-	float : right;
-	margin-top : -3px;
-	margin-right : 385px;
+#plus {
+	position: relative;
+	float: right;
+	margin-top: -3px;
+	margin-right: 385px;
 }
 
-#challenges
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
-	margin-left : 5px;
+#challenges {
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
 	width: 670px;
 }
 
-#listeChallenge
-{
-	position : relative;
-	float : left;
+#listeChallenge {
+	position: relative;
+	float: left;
 	margin-left: 5px;
 }
 
-.infoChallenge
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
+.infoChallenge {
+	position: relative;
+	float: left;
+	margin-top: 10px;
 	margin-left: 25px;
-	border : 1px solid black;
-	padding : 5px;
+	border: 1px solid black;
+	padding: 5px;
 }
 
-.modifInfoChallenge
-{
-	position : relative;
-	float : left;
+.modifInfoChallenge {
+	position: relative;
+	float: left;
 	margin-left: 40px;
-	border : 1px solid black;
-	padding : 5px;
+	border: 1px solid black;
+	padding: 5px;
 }
 
-#challenges table
-{
+#challenges table {
 	border-collapse: collapse;
-	margin-top : 10px;
+	margin-top: 10px;
 }
-#challenges td
-{
-	border : 1px solid black;
+
+#challenges td {
+	border: 1px solid black;
 	text-align: center;
 	padding-left: 10px;
 	padding-right: 10px;
 }
-#challenges th
-{
+
+#challenges th {
 	background-color: navy;
-	color : white;
+	color: white;
 }
-#challenges tbody tr:nth-child(odd)
-{
+
+#challenges tbody tr:nth-child(odd) {
 	background-color: silver;
 }
 
-#newChallenge
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
-	margin-left : 5px;
+#newChallenge {
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
 	width: 670px;
 }
 
-#suprChallenge
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
-	margin-left : 5px;
+#suprChallenge {
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
 	width: 670px;
 }
 
-#modifChallenge
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
-	margin-left : 5px;
+#modifChallenge {
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
 	width: 670px;
 }
 
-.info
-{
-	cursor : pointer;	
+.info {
+	cursor: pointer;
 }
 
-.oui
-{
-	color : green;
+.oui {
+	color: green;
 }
-.non
-{
-	color : red;
+
+.non {
+	color: red;
 }

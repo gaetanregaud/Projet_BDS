@@ -1,34 +1,30 @@
-#barremenuBDS
-{
-	position : relative;
-	float : left;
-	margin-top : 10px;
-    margin-left : 5px;
-    border : 1px SOlID black;
-    width : 150px;
-    height : 325px;
-    align-content: center;
-    padding : 5px;
-    background-color : green;
+#barremenuBDS {
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
+	border: 1px SOlID black;
+	width: 150px;
+	height: 325px;
+	align-content: center;
+	padding: 5px;
+	background-color: green;
 }
 
-#barremenuBDS ul
-{
-    padding-left: 15px;
+#barremenuBDS ul {
+	padding-left: 15px;
 }
 
-#barremenuBDS ul li
-{
-    margin-top : 5px;
+#barremenuBDS ul li {
+	margin-top: 5px;
 }
 
-.titre
-{
-	text-decoration :underline;
-	font-size : 15px;
+.titre {
+	text-decoration: underline;
+	font-size: 15px;
 }
-.ss_titre
-{
-	font-size : 12px;
-	cursor : pointer;
+
+.ss_titre {
+	font-size: 12px;
+	cursor: pointer;
 }

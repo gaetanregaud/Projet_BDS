@@ -1,25 +1,23 @@
-body
-{
-    color : #333;
-    background-color: #000;
-}
-section
-{
-    position : absolute;
-    top : 334px;
-    left : 50%;
-    margin-left : -425px;
-    background-color: white;
-    width : 850px;
-    height : auto;
+body {
+	color: #333;
+	background-color: #000;
 }
 
-#connexion
-{
-	position : absolute;
-	left : 50%;
-	margin-top : 100px;
-	margin-left : -200px;
+section {
+	position: absolute;
+	top: 334px;
+	left: 50%;
+	margin-left: -425px;
+	background-color: white;
+	width: 850px;
+	height: auto;
+}
+
+#connexion {
+	position: absolute;
+	left: 50%;
+	margin-top: 100px;
+	margin-left: -200px;
 	text-align: center;
-	width:400px;
+	width: 400px;
 }

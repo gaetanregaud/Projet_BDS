@@ -1,115 +1,108 @@
-body
-{
-    color : #333;
-    background-color: #000;
-}
-section
-{
-    position : absolute;
-    top : 334px;
-    left : 50%;
-    margin-left : -425px;
-    background-color: white;
-    width : 850px;
-    height : auto;
-    padding-bottom: 50px;
+body {
+	color: #333;
+	background-color: #000;
 }
 
-#connexion
-{
-	position : absolute;
-	left : 50%;
-	margin-top : 100px;
-	margin-left : -200px;
+section {
+	position: absolute;
+	top: 334px;
+	left: 50%;
+	margin-left: -425px;
+	background-color: white;
+	width: 850px;
+	height: auto;
+	padding-bottom: 50px;
+}
+
+#connexion {
+	position: absolute;
+	left: 50%;
+	margin-top: 100px;
+	margin-left: -200px;
 	text-align: center;
-	width:400px;
+	width: 400px;
 }
 
-#photo_id
-{
-    float : right;
-    margin : 5px;
-    width : 250px;
-    height : 250px;
-    border : 1px solid BLACK;
+#photo_id {
+	float: right;
+	margin: 5px;
+	width: 250px;
+	height: 250px;
+	border: 1px solid BLACK;
 }
 
-#titre-h3
-{
-    text-align:center;
+#titre-h3 {
+	text-align: center;
 }
 
-#information
-{
-	postion :absolute;
-	font-size : 15px;
-    float : left;
-    margin : 10px;
-    width : 500px;
-}
-#participant
-{
-	position : relative;
-	left : 50%;
-	width : 840px;
-	margin-top : 200px;
-	margin-bottom : 10px;
-	margin-left : -420px;
-}
-
-.btn, .btn a
-{
+#information {
+	postion: absolute;
 	font-size: 15px;
-	color : blue;
-}
-#seance
-{
-	position : relative;
-	left : 50%;
-	width : 840px;
-	margin-top : 10px;
-	margin-left : -420px;
+	float: left;
+	margin: 10px;
+	width: 500px;
 }
 
-#seance table
-{
-	text-align:  center;
+#participant {
+	position: relative;
+	left: 50%;
+	width: 840px;
+	margin-top: 200px;
+	margin-bottom: 10px;
+	margin-left: -420px;
 }
-table
-{
+
+.btn,.btn a {
+	font-size: 15px;
+	color: blue;
+}
+
+#seance {
+	position: relative;
+	left: 50%;
+	width: 840px;
+	margin-top: 10px;
+	margin-left: -420px;
+}
+
+#seance table {
+	text-align: center;
+}
+
+table {
 	border-collapse: collapse;
-	margin-top : 10px;
+	margin-top: 10px;
 }
-td, th
-{
-	border : 1px solid black;
+
+td,th {
+	border: 1px solid black;
 	text-align: center;
 	padding-left: 10px;
 	padding-right: 10px;
 }
-th
-{
+
+th {
 	background-color: navy;
-	color : white;
-	border : 1px solid white;
+	color: white;
+	border: 1px solid white;
 }
-tbody tr:nth-child(odd)
-{
+
+tbody tr:nth-child(odd) {
 	background-color: silver;
 }
-.oui
-{
-	color : green;
+
+.oui {
+	color: green;
 }
-.non
-{
-	color : red;
+
+.non {
+	color: red;
 }
-.btnSeance
-{
-	position : relative;
-	left : 50%;
-	margin-left : -60px;
-	width : 120px;
-	text-align : center;
+
+.btnSeance {
+	position: relative;
+	left: 50%;
+	margin-left: -60px;
+	width: 120px;
+	text-align: center;
 }
