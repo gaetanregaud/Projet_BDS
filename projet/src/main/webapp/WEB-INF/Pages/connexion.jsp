@@ -36,7 +36,8 @@
 								for="vp">VP</label> <input type="radio" name="compte"
 								value="bds" id="bds" required /><label for="bds">BDS</label>
 						</p>
-						<input type="submit" value="Connexion" class="sansLabel" /> <br />
+						<input type="submit" value="Connexion" class="sansLabel" />
+						<a href="inscription"><input type="button" value="s'inscrire"/></a> <br />
 					</fieldset>
 				</form>
 			</div>

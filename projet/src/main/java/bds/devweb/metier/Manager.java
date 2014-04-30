@@ -247,6 +247,14 @@ public class Manager {
 	public void ModifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
 		vpDao.ModifierNoteVP(id_vp, id_equipeSport, moyenne);
 	}
+	
+	public List<Etudiant> listerEtudiant(){
+		return etudiantDao.listerEtudiant();
+	}
+	
+	public void inscriptionEtudiant(Etudiant etudiant, String password){
+		etudiantDao.inscriptionEtudiant(etudiant, password);
+	}
 	//Calendrier
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
 		return calendrierDao.calendrier(annee1, annee2);

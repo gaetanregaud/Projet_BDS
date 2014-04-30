@@ -43,7 +43,6 @@ public class FicheEtudiantServlet extends HttpServlet {
 			request.setAttribute("etudiant", etudiant);
 			List<Pratiquer> pratiquers = Manager.getInstance().listerPratiquerforEtudiant(identifiant);
 			request.setAttribute("pratiquers", pratiquers);
-			System.out.println("je suis: "+pratiquers.get(0).getVp().getNom());
 			List<Seance> seances = Manager.getInstance().listerSeancebyIdforEtudiant(identifiant);
 			request.setAttribute("seances", seances);
 			List<Participer> participations =  Manager.getInstance().listerParticipationforEtudiant(identifiant);

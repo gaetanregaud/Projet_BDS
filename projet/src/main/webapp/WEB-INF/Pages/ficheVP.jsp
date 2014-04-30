@@ -194,17 +194,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="pratiquantnote" items="${pratiquantsnote}">
-										<tr>
-											<td>${pratiquantnote.etudiant.identifiant}</td>
-											<td>${pratiquantnote.etudiant.nom}</td>
-											<td>${pratiquantnote.etudiant.prenom}</td>
-											<td><select id="presence"
-												name="presence_${pratiquantnote.etudiant.identifiant}">
-													<option class="oui" value="1">Oui</option>
-													<option class="non" value="0">Non</option>
-											</select></td>
-										</tr>
+									<c:forEach var="pratiquant" items="${pratiquants}">
+										<c:if test="${pratiquant.note == '1'}">
+											<tr>
+												<td>${pratiquant.etudiant.identifiant}</td>
+												<td>${pratiquant.etudiant.nom}</td>
+												<td>${pratiquant.etudiant.prenom}</td>
+												<td><select id="presence"
+													name="presence_${pratiquant.etudiant.identifiant}">
+														<option class="oui" value="1">Oui</option>
+														<option class="non" value="0">Non</option>
+												</select></td>
+											</tr>
+										</c:if>
 									</c:forEach>
 								</tbody>
 							</table>
