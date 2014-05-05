@@ -11,7 +11,7 @@ import bds.devweb.model.Adresse;
 
 public class AdresseDao {
 	
-	public List<Adresse> ListerAdresse(){
+	public List<Adresse> listerAdresse(){
 	List<Adresse> listeAdresse = new ArrayList<Adresse>();
 	try {
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -40,17 +40,18 @@ public class AdresseDao {
 		return listeAdresse;
 	}
 	
-	public void AjouterAdresse (Adresse adresse){
+	public void ajouterAdresse (Adresse adresse){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			// Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO adresse (site_adr, num_adr, rue_adr, cp_adr, ville_adr, pays_adr) VALUES (?, ?, ?, ?, ?, ?)");
-			stmt.setString(1, adresse.getNom());
-			stmt.setString(2, adresse.getNum());
-			stmt.setString(3, adresse.getRue());
-			stmt.setString(4, adresse.getCp());
-			stmt.setString(5, adresse.getVille());
-			stmt.setString(6, adresse.getPays());
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO adresse  VALUES (?, ?, ?, ?, ?, ?, ?)");
+			stmt.setString(1, adresse.getId());
+			stmt.setString(2, adresse.getNom());
+			stmt.setString(3, adresse.getNum());
+			stmt.setString(4, adresse.getRue());
+			stmt.setString(5, adresse.getCp());
+			stmt.setString(6, adresse.getVille());
+			stmt.setString(7, adresse.getPays());
 
 			stmt.executeUpdate();
 

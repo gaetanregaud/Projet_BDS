@@ -37,12 +37,12 @@ public class AdresseServlet extends HttpServlet {
 		String pays = request.getParameter("pays");
 		System.out.println(ville);
 		Adresse adresse = new Adresse(" ", nom, num, rue, cp, ville, pays);
-		Manager.getInstance().ajouterAdresse(adresse);
-		adresse = Manager.getInstance().getAdresseByNom(nom);
+		Manager.getInstance().ajouterAdresse(adresse); //Ajoute l'adresse dans la BDD
+		adresse = Manager.getInstance().getAdresseByNom(nom); //Récupère l'id de l'adresse enregistré à l'instant
 		Gson gson = new Gson();
 		String adresseJson = gson.toJson(adresse);
 		response.setContentType("application/json");
-		response.getWriter().write(adresseJson);
+		response.getWriter().write(adresseJson); //Retourne en JSON la fiche de l'adresse pour le JS
 	}
 
 }

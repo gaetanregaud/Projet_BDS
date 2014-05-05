@@ -31,23 +31,33 @@ public class FicheEtudiantServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		// Retourne la liste des sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
-		// Fin Listes de la barre de menu du header
-		//Donn��es relatives �� la page
+			
+		// Retourne la liste des équipes sport de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+			
+
+		// Récupère l'id de connexion et retourne la fiche étuidante de la BDD
 			String identifiant = (String) request.getSession().getAttribute("user_id");
 			Etudiant etudiant = Manager.getInstance().getEtudiant(identifiant);
 			request.setAttribute("etudiant", etudiant);
-			List<Pratiquer> pratiquers = Manager.getInstance().listerPratiquerforEtudiant(identifiant);
+			
+		// Liste les pratiques de sport de l'étudiant
+			List<Pratiquer> pratiquers = Manager.getInstance().listerPratiqueforEtudiant(identifiant);
 			request.setAttribute("pratiquers", pratiquers);
+		
+		// Liste les séances du sport noté de l'étudiant
 			List<Seance> seances = Manager.getInstance().listerSeancebyIdforEtudiant(identifiant);
 			request.setAttribute("seances", seances);
+		
+		// Liste les challenges de l'étudiant dans lesquels il s'est inscrit
 			List<Participer> participations =  Manager.getInstance().listerParticipationforEtudiant(identifiant);
 			request.setAttribute("participations", participations);
-		// Donn��es du Calendrier
+			
+		// Données du Calendrier + Liste des challenges
 			Date date = new Date();
 			int mois = date.getMonth();
 			int jour = date.getDate();
@@ -59,13 +69,35 @@ public class FicheEtudiantServlet extends HttpServlet {
 			request.setAttribute("calendriers", calendriers);
 			List<Challenge> challenges =  Manager.getInstance().listerChallenge();
 			request.setAttribute("challenges", challenges);
-		//Fin Donn��es relatives �� la page
+		
+		// Affiche la page ficheEtudiant.jsp
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/ficheEtudiant.jsp");
 			view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// Récupère le type de la method post à affectuer
+			String type = request.getParameter("type");
+		
+		//Récupère l'id de connexion de l'étudiant
+		String id_etudiant = (String) request.getSession().getAttribute("user_id");
+		
+		
+		if(type.equals("inscriptionEquipeSport")){//Method post pour s'inscrire à une équipe sport (AS)
+			System.out.println(id_etudiant);
+			String id_equipeSport = request.getParameter("sport");
+			System.out.println(id_equipeSport);
+			String note = request.getParameter("note");
+			System.out.println(note);
+			String noteR ="0";
+			if(note.equals("oui")){
+				noteR = "1";
+			}
+			System.out.println(noteR);
+			Pratiquer pratique = new Pratiquer(id_etudiant, id_equipeSport, noteR);
+			Manager.getInstance().ajouterPratique(pratique); //Ajoute l'inscription à l'équipe sport(AS) à la BDD
+			response.sendRedirect("ficheetudiant");
+		}
 	}
 
 }

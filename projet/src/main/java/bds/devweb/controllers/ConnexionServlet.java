@@ -28,26 +28,28 @@ public class ConnexionServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		// Retourne la liste des sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
-		// Fin Listes de la barre de menu du header
-
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/connexion.jsp");
-		view.forward(request, response);
+			
+		// Retourne la liste des equipes Sport (AS) de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+			
+		// Affiche la page de connexion.jsp
+			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/connexion.jsp");
+			view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String compte = request.getParameter("compte");
+		String compte = request.getParameter("compte"); //Récupère l'info du bouton radio etudiant, vp ou BDS
 		String identifiant = request.getParameter("identifiant");
 		String password = request.getParameter("password");
 		String confirmMessage ="";
 		String errorMessage = "";
 		String bienvenue = "";
 		
-		if(compte.equals("etudiant"))
+		if(compte.equals("etudiant")) //Si le compte séléctionner est étudiant
 		{
 			if(Manager.getInstance().seConnecterEtudiant(identifiant, password)){
 				request.getSession().setAttribute("user_type", compte);
@@ -64,9 +66,9 @@ public class ConnexionServlet extends HttpServlet {
 			request.getSession().setAttribute("confirm", confirmMessage);
 			request.getSession().setAttribute("error", errorMessage);
 			request.getSession().setAttribute("message", bienvenue);
-			response.sendRedirect("ficheetudiant");
+			response.sendRedirect("ficheetudiant"); //Renvoie sur la servlet ficheetudiant
 		}
-		else if(compte.equals("vp"))
+		else if(compte.equals("vp")) //Si le compte séléctionner est vp
 		{
 			if(Manager.getInstance().seConnecterVP(identifiant, password)){
 				request.getSession().setAttribute("user_type", compte);
@@ -85,9 +87,9 @@ public class ConnexionServlet extends HttpServlet {
 			request.getSession().setAttribute("confirm", confirmMessage);
 			request.getSession().setAttribute("error", errorMessage);
 			request.getSession().setAttribute("message", bienvenue);
-			response.sendRedirect("fichevp");
+			response.sendRedirect("fichevp"); //Renvoie sur la servlet fichevp
 		}	
-		else if(compte.equals("bds"))
+		else if(compte.equals("bds")) //Si le compte sélectionner est BDS
 		{
 			if(Manager.getInstance().seConnecterBDS(identifiant, password)){
 				request.getSession().setAttribute("user_type", compte);
@@ -103,7 +105,7 @@ public class ConnexionServlet extends HttpServlet {
 			request.getSession().setAttribute("confirm", confirmMessage);
 			request.getSession().setAttribute("error", errorMessage);
 			request.getSession().setAttribute("message", bienvenue);
-			response.sendRedirect("accueilbds");
+			response.sendRedirect("accueilbds"); //Renvoie sur la servlet accueilbds
 		}	
 	}
 

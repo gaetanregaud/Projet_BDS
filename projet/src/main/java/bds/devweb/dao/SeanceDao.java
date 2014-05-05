@@ -14,13 +14,13 @@ import bds.devweb.model.Seance;
 
 public class SeanceDao {
 	
-	public List<Seance> listerNumeroSeancebyEquipeSport (String identifiant){
+	public List<Seance> listerNumeroSeancebyEquipeSport (String id_equipeSport){
 		List<Seance> listeNumeroSeancebyEquipeSportby = new ArrayList<Seance>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
 			PreparedStatement stmt = connection.prepareStatement("SELECT seance.*, etudiant.* FROM etudiant INNER JOIN (seance INNER JOIN pratiquer ON seance.id_equipeSport = pratiquer.id_equipeSport) ON etudiant.id_etudiant = seance.id_etudiant WHERE seance.id_equipeSport = ?  AND pratiquer.note='1' GROUP BY seance.id_seance ORDER BY seance.id_seance ASC");
-			stmt.setString(1,  identifiant);
+			stmt.setString(1,  id_equipeSport);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()){
 				Seance seance = new Seance(
@@ -54,14 +54,14 @@ public class SeanceDao {
 		return listeNumeroSeancebyEquipeSportby;
 	}
 	
-	public List<Seance> listerSeancebyNumforEquipeSport (String identifiant){
+	public List<Seance> listerSeancebyNumforEquipeSport (String id_equipeSport){
 		List<Seance> listeSeancebyNumforEquipeSport = new ArrayList<Seance>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
 			PreparedStatement stmt = connection.prepareStatement("SELECT seance.*, etudiant.* FROM seance INNER JOIN (pratiquer INNER JOIN etudiant ON pratiquer.id_etudiant = etudiant.id_etudiant) ON seance.id_etudiant = pratiquer.id_etudiant WHERE pratiquer.id_equipeSport = ? AND seance.id_equipeSport = ? AND pratiquer.note = '1' ORDER BY seance.id_seance");
-			stmt.setString(1,  identifiant);
-			stmt.setString(2,  identifiant);
+			stmt.setString(1,  id_equipeSport);
+			stmt.setString(2,  id_equipeSport);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()){
 				Seance seance = new Seance(
@@ -95,14 +95,14 @@ public class SeanceDao {
 		return listeSeancebyNumforEquipeSport;
 	}
 
-	public List<Seance> listerSeancebyIdforEquipeSport (String identifiant){
+	public List<Seance> listerSeancebyIdforEquipeSport (String id_equipeSport){
 		List<Seance> listeSeancebyIdforEquipeSport = new ArrayList<Seance>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
 			PreparedStatement stmt = connection.prepareStatement("SELECT seance.*, etudiant.* FROM seance INNER JOIN (pratiquer INNER JOIN etudiant ON pratiquer.id_etudiant = etudiant.id_etudiant) ON seance.id_etudiant = pratiquer.id_etudiant WHERE pratiquer.id_equipeSport = ? AND seance.id_equipeSport = ? AND pratiquer.note = '1' ORDER BY seance.id_etudiant ASC, seance.id_seance ASC");
-			stmt.setString(1,  identifiant);
-			stmt.setString(2,  identifiant);
+			stmt.setString(1,  id_equipeSport);
+			stmt.setString(2,  id_equipeSport);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()){
 				Seance seance = new Seance(
@@ -164,7 +164,7 @@ public class SeanceDao {
 		return listerSeancebyIdforEtudiant;
 	}
 	
-	public void AjouterSeance (Seance seance){
+	public void ajouterSeance (Seance seance){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			// Utiliser la connexion

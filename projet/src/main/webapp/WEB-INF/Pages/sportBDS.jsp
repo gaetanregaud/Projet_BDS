@@ -69,21 +69,20 @@
 				<fieldset>
 					<legend>Nouveau Sport</legend>
 					<form method="post" action="sportbds">
-						<input type="hidden" name="type" value="newSport" /> <label
-							for="id_sport">Id du sport</label> <input type="text"
-							class="id_sport" name="id_sport" />(ex: rugb)</br> <label
-							for="nom_sport">Nom du sport</label> <input type="text"
-							class="nom_sport" name="nom_sport" /></br> <label for="id_equipeSport">Id
-							de l'équipe</label> <input type="text" class="id_equipeSport"
-							name="id_equipeSport" />(ex: rugb_e1)</br> <label
-							for="nom_equipeSport">Nom de l'équipe</label> <input type="text"
-							class="nom_equipeSport" name="nom_equipeSport" />(ex : Equipe 1)</br>
-						<label for="vp">VP :</label> <input type="text" class="vp"
-							name="vp" /> <span class="oui"><img
-							src="IMAGE/main/oui_icone.jpg" width="15px" height="15px" /></span> <span
-							class="non"><img src="IMAGE/main/non_icone.jpg"
-							width="15px" height="15px" /></span> <input type="Submit"
-							value="Valider" class="ok" />
+						<input type="hidden" name="type" value="newSport" /> 
+						<labe for="id_sport">Id du sport</label>
+						<input type="text" class="id_sport" name="id_sport" />(ex: rugb)</br> 
+						<label for="nom_sport">Nom du sport</label> 
+						<input type="text" class="nom_sport" name="nom_sport" /></br> 
+						<label for="id_equipeSport">Id de l'équipe</label> 
+						<input type="text" class="id_equipeSport" name="id_equipeSport" />(ex: rugb_e1)</br> 
+						<label for="nom_equipeSport">Nom de l'équipe</label> 
+						<input type="text" class="nom_equipeSport" name="nom_equipeSport" />(ex : Equipe 1)</br>
+						<label for="newvp">VP :</label> 
+						<input type="text" id="newvp" name="newvp" /> 
+						<span class="oui"><img src="IMAGE/main/oui_icone.jpg" width="15px" height="15px" /></span> 
+						<span class="non"><img src="IMAGE/main/non_icone.jpg" width="15px" height="15px" /></span> 
+						<input type="Submit" value="Valider" class="ok" />
 					</form>
 				</fieldset>
 			</div>

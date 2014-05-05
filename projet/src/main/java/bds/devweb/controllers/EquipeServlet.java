@@ -25,13 +25,15 @@ public class EquipeServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		// Retourne la liste des sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
-		// Fin Listes de la barre de menu du header
 			
+		// Retourne la liste des équipes sports (AS) de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+			
+		// Affiche la page equipe.jsp	
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/equipe.jsp");
 		view.forward(request, response);
 	}

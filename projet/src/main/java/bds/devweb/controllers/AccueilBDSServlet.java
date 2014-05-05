@@ -26,17 +26,18 @@ public class AccueilBDSServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		//Retourne la liste des Sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
-		// Fin Listes de la barre de menu du header
-		//Donn��es relatives �� la page
+		//Retourne la liste es équipes de sport (AS) de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+
+		//Retourne la fiche BDS de la personne s'étant connecté avec son identifiant HEI
 			String identifiant = (String) request.getSession().getAttribute("user_id");
 			BDS bds = Manager.getInstance().getBDS(identifiant);
 			request.setAttribute("bds", bds);
-		//Fin Donn��es relatives �� la page
+		//Ouvre la page acceuilBDS.jsp
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/accueilBDS.jsp");
 			view.forward(request, response);
 	}

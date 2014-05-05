@@ -34,7 +34,8 @@ public class PresenceChallengeServlet extends HttpServlet {
 		for(int i = 0; i < participants.size(); i++){
 			String id_etudiant =  participants.get(i).getId_etudiant();
 			String presence = request.getParameter("presence_"+id_etudiant+id_challenge);
-			Manager.getInstance().modifierPresence(id_etudiant, id_challenge, presence);
+			Participer participer = new Participer(id_etudiant, id_challenge, presence);
+			Manager.getInstance().modifierPresence(participer);
 		}
 		response.sendRedirect("challengebds");
 		

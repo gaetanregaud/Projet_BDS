@@ -22,9 +22,9 @@ public class DeconnexionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Deconnexion...");
 		HttpSession session = request.getSession(true); 
-		session.invalidate();
+		session.invalidate(); //Déconnecte la session actuellement connecté
 		System.out.println("Session ferm��e");
-		response.sendRedirect("accueil");
+		response.sendRedirect("accueil"); //Renvoie sur la servlet accueil
 	}
 
 

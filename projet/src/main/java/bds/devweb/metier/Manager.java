@@ -66,152 +66,146 @@ public class Manager {
 		notevpDao = new NoteVPDao();
 	}
 	
-	//Requ��te pour un ��tudiant
+	//Requète pour un EtudiantDAO
 	public boolean seConnecterEtudiant(String identifiant, String password){
 		return etudiantDao.seConnecter(identifiant, password);
 	}
 	
-	public boolean EtudiantExiste(String identifiant){
-		return etudiantDao.EtudiantExist(identifiant);
+	public Etudiant getEtudiant(String id_etudiant){
+		return etudiantDao.getEtudiant(id_etudiant);
 	}
 	
-	public Etudiant getEtudiant(String identifiant){
-		return etudiantDao.getEtudiant(identifiant);
+	public void modifEtudiant(Etudiant etudiant){
+		etudiantDao.modifEtudiant(etudiant);
 	}
 	
-	public List<Pratiquer> listerPratiquerforEtudiant(String identifiant) {
-		List<Pratiquer> liste = pratiquerDao.listerPratiquerforEtudiant(identifiant);
-		return liste;
+	public List<Etudiant> listerEtudiant(){
+		return etudiantDao.listerEtudiant();
 	}
 	
-	public List<Seance> listerSeancebyIdforEtudiant(String identifiant){
-		return seanceDao.listerSeancebyIdforEtudiant(identifiant);
+	public void inscriptionEtudiant(Etudiant etudiant, String password){
+		etudiantDao.inscriptionEtudiant(etudiant, password);
 	}
 	
-	public List<Participer> listerParticipationforEtudiant(String identifiant){
-		return participerDao.listerParticipationforEtudiant(identifiant);
-	}
+	// Requète pour VPDao
 	
-	public List<Challenge> listerChallenge(){
-		return challengeDao.listerChallenge();
-	}
-	
-	public void ajouterParticipationToChallenge (Participer participer){
-		participerDao.AjouterParticipationToChallenge(participer);
-	}
-	
-	//Requ��te pour un VP
 	public boolean seConnecterVP(String identifiant, String password){
 		return vpDao.seConnecter(identifiant, password);
 	}
 	
-	public VP getVP(String identifiant){
-		return vpDao.getVP(identifiant);
-	}
-	public  List<Pratiquer> listerPratiquantbyVP(String identifiant){
-		return pratiquerDao.listerPratiquantbyVP(identifiant);
+	public VP getVP(String id_vp){
+		return vpDao.getVP(id_vp);
 	}
 	
-	public  List<Pratiquer> listerPratiquantNotebyVP(String identifiant){
-		return pratiquerDao.listerPratiquantNotebyVP(identifiant);
+	public List<VP> listerVP(){
+		return vpDao.listerVP();
 	}
 	
-	public List<EquipeSport> listerEquipeSportbySport(String identifiant){
-		return equipesportDao.listerEquipeSportsbySport(identifiant);
+	public void ajouterVPForNewEquipeSport (String id_etudiant, String id_equipeSport){
+		vpDao.ajouterVPForNewEquipeSport(id_etudiant, id_equipeSport);
 	}
 	
-	public List<Seance> listerSeancebyNumforEquipeSport(String identifiant){
-		return seanceDao.listerSeancebyNumforEquipeSport(identifiant);
+	public void modifierVPForExistEquipeSport (String id_etudiant, String id_equipeSport){
+		vpDao.modifierVPForExistEquipeSport(id_etudiant, id_equipeSport);
 	}
 	
-	public List<Seance> listerSeancebyIdforEquipeSport(String identifiant){
-		return seanceDao.listerSeancebyIdforEquipeSport(identifiant);
+	public void modifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
+		vpDao.modifierNoteVP(id_vp, id_equipeSport, moyenne);
 	}
 	
-	public List<Seance> listerNumeroSeancebyEquipeSport(String identifiant){
-		return seanceDao.listerNumeroSeancebyEquipeSport(identifiant);
+	public VP getVPAndEquipeSport (String id_equipeSport){
+		return vpDao.getVPAndEquipeSport(id_equipeSport);
 	}
 	
-	public void ajouterSeance (Seance seance){
-		seanceDao.AjouterSeance(seance);
-	}
+	// Requète pour BDSDao
 	
-	public void deleteChallenge (String id_challenge){
-		challengeDao.deleteChallenge(id_challenge);
-	}
-	
-	
-	//Requ��te pour la barre de menus
-	public List<Sport> listerLiSports() {
-		List<Sport> liste = sportDao.listerLiSports();
-		return liste;
-	}
-	//Requ��te pour une personne du BDS
 	public boolean seConnecterBDS(String identifiant, String password){
 		return bdsDao.seConnecterBDS(identifiant, password);
 	}
-	public BDS getBDS(String identifiant){
-		return bdsDao.getBDS(identifiant);
-	}
-	public List<Adresse> listerAdresse(){
-		return adresseDao.ListerAdresse();
+	
+	public BDS getBDS(String id_bds){
+		return bdsDao.getBDS(id_bds);
 	}
 	
-	public List<Participer> listerParticipation(){
-		return participerDao.listerParticipation();
+	// Requète pour SportDao
+	
+	public List<Sport> listerSports() {
+		return sportDao.listerSports();
 	}
 	
-	public List<Participer> listerParticipationByChallenge (String id_challenge){
-		return participerDao.listerParticipationByChallenge(id_challenge);
+	public void ajouterSport (Sport sport){
+		sportDao.ajouterSport(sport);
 	}
 	
-	public void modifierPresence (String id_etudiant, String id_challenge, String presence){
-		participerDao.ModifierPresence(id_etudiant, id_challenge, presence);
+	public void supprimerSport(String id_sport){
+		sportDao.supprimerSport(id_sport);
 	}
 	
-	public List<Challenge> listerTypeChallenge(){
-		return challengeDao.listerTypeChallenge();
-	}
-	
-	public void ajouterChallenge(Challenge challenge){
-		challengeDao.AjouterChallenge(challenge);
-	}
-	
-	public void ajouterAdresse(Adresse adresse){
-		adresseDao.AjouterAdresse(adresse);
-	}
-	
-	public List<Etudiant> listerEtudiantNotOk(){
-		return etudiantDao.listerEtudiantNotOK();
-	}
+	// Requète pour EquipeSportDao
 	
 	public List<EquipeSport> listerEquipeSport(){
 		return equipesportDao.listerEquipeSport();
 	}
 	
+	public List<EquipeSport> listerEquipeSportbySport(String id_sport){
+		return equipesportDao.listerEquipeSportsbySport(id_sport);
+	}
+	
 	public void supprimerEquipeSport(String id_equipeSport){
-		equipesportDao.deleteEquipeSport(id_equipeSport);
+		equipesportDao.supprimerEquipeSport(id_equipeSport);
 	}
 	
-	public void supprimerSport(String id_sport){
-		sportDao.deleteSport(id_sport);
+	public void ajouterEquipeSport (EquipeSport equipesport){
+		equipesportDao.ajouterEquipeSport(equipesport);
 	}
 	
-	public void modifierVPforEquipeSport(String id_equipeSport, String id_etudiant){
-		vpDao.ModifierVPForEquipeSport(id_equipeSport, id_etudiant);
+	// Requète pour PratiquerDao
+	
+	public List<Pratiquer> listerPratiqueforEtudiant(String id_etudiant) {
+		return pratiquerDao.listerPratiqueforEtudiant(id_etudiant);
 	}
 	
-	public void ajouterEquipeSport (String id_equipeSport, String nom_equipeSport, String id_categorie, String id_sport){
-		equipesportDao.ajouterEquipeSport(id_equipeSport, nom_equipeSport, id_categorie, id_sport);
+	public  List<Pratiquer> listerPratiquantbyEquipeSport (String id_equipeSport){
+		return pratiquerDao.listerPratiquantbyEquipeSport(id_equipeSport);
 	}
 	
-	public void ajouterVP (String id_etudiant, String id_equipeSport){
-		vpDao.AjouterVP(id_etudiant, id_equipeSport);
+	public void ajouterPratique (Pratiquer pratique){
+		pratiquerDao.ajouterPratique(pratique);
 	}
 	
-	public void ajouterSport (String id_sport, String nom_sport){
-		sportDao.ajouterSport(id_sport, nom_sport);
+	// Requète pour SeanceDao
+	
+	public List<Seance> listerSeancebyIdforEtudiant(String id_etudiant){
+		return seanceDao.listerSeancebyIdforEtudiant(id_etudiant);
 	}
+	
+	public List<Seance> listerSeancebyNumforEquipeSport(String id_equipeSport){
+		return seanceDao.listerSeancebyNumforEquipeSport(id_equipeSport);
+	}
+	
+	public List<Seance> listerSeancebyIdforEquipeSport(String id_equipeSport){
+		return seanceDao.listerSeancebyIdforEquipeSport(id_equipeSport);
+	}
+	
+	public List<Seance> listerNumeroSeancebyEquipeSport(String id_equipeSport){
+		return seanceDao.listerNumeroSeancebyEquipeSport(id_equipeSport);
+	}
+	
+	public void ajouterSeance (Seance seance){
+		seanceDao.ajouterSeance(seance);
+	}
+	
+	// Requète pour NoteVPDao
+	
+	public void ajouterNoteVP(NoteVP notevp){
+		notevpDao.ajouterNoteVP(notevp);
+	}
+	
+	public List<NoteVP> listerNoteVP(String id_vp, String id_equipeSport){
+		return notevpDao.listerNoteVP(id_vp, id_equipeSport);
+	}
+	
+	//  Requète pour ChallengeDao
 	
 	public Challenge getChallenge (String id_challenge){
 		return challengeDao.getChallenge(id_challenge);
@@ -225,42 +219,63 @@ public class Manager {
 		challengeDao.modifierChallenge(challenge);
 	}
 	
+	public List<Challenge> listerChallenge(){
+		return challengeDao.listerChallenge();
+	}
+	
+	public List<Challenge> listerTypeChallenge(){
+		return challengeDao.listerTypeChallenge();
+	}
+	
+	public void ajouterChallenge(Challenge challenge){
+		challengeDao.ajouterChallenge(challenge);
+	}
+	
+	public void supprimerChallenge (String id_challenge){
+		challengeDao.supprimerChallenge(id_challenge);
+	}
+	
+	// Requète pour AdresseDao
+	
+	public List<Adresse> listerAdresse(){
+		return adresseDao.listerAdresse();
+	}
+	
 	public Adresse getAdresseByNom(String nom_adresse){
 		return adresseDao.getAdresseByNom(nom_adresse);
 	}
-	public void modifEtudiant(Etudiant etudiant){
-		etudiantDao.modifEtudiant(etudiant);
+	
+	public void ajouterAdresse(Adresse adresse){
+		adresseDao.ajouterAdresse(adresse);
 	}
 	
-	public VP getEquipeSportAndVP (String id_equipeSport){
-		return equipesportDao.getEquipeSportAndVP(id_equipeSport);
+	// Requète pour ParticiperDao
+	
+	public List<Participer> listerParticipationforEtudiant(String id_etudiant){
+		return participerDao.listerParticipationforEtudiant(id_etudiant);
 	}
 	
-	public void ajouterNoteVP(NoteVP notevp){
-		notevpDao.ajouterNoteVP(notevp);
+	public List<Participer> listerParticipationByChallenge (String id_challenge){
+		return participerDao.listerParticipationByChallenge(id_challenge);
 	}
 	
-	public List<NoteVP> listerNoteVP(String id_vp, String id_equipeSport){
-		return notevpDao.listerNoteVP(id_vp, id_equipeSport);
+	public List<Participer> listerParticipation(){
+		return participerDao.listerParticipation();
 	}
 	
-	public void ModifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
-		vpDao.ModifierNoteVP(id_vp, id_equipeSport, moyenne);
+	public void ajouterParticipationToChallenge (Participer participer){
+		participerDao.ajouterParticipationToChallenge(participer);
 	}
 	
-	public List<Etudiant> listerEtudiant(){
-		return etudiantDao.listerEtudiant();
+	public void modifierPresence (Participer participer){
+		participerDao.modifierPresence(participer);
 	}
 	
-	public void inscriptionEtudiant(Etudiant etudiant, String password){
-		etudiantDao.inscriptionEtudiant(etudiant, password);
-	}
-	//Calendrier
+	//Requète pour DateCalendrierDao
+	
 	public List<DateCalendrier> calendrier(int annee1, int annee2){
 		return calendrierDao.calendrier(annee1, annee2);
 	}
 	
-	public List<VP> listerVP(){
-		return vpDao.listerVP();
-	}
+	
 }

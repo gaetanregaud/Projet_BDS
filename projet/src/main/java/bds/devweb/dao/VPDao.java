@@ -65,6 +65,7 @@ public class VPDao {
 						results.getString("sport.nom_sport"),
 						results.getString("equipe_sport.id_equipeSport"),
 						results.getString("equipe_sport.nom_equipeSport"),
+						results.getString("equipe_sport.id_categorie"),
 						results.getString("description_equipeSport")
 								));
 			}
@@ -106,6 +107,7 @@ public class VPDao {
 								results.getString("sport.nom_sport"),
 								results.getString("equipe_sport.id_equipeSport"),
 								results.getString("equipe_sport.nom_equipeSport"),
+								results.getString("equipe_sport.id_categorie"),
 								results.getString("description_equipeSport")
 								));
 						listeVP.add(vp);
@@ -121,7 +123,7 @@ public class VPDao {
 		return listeVP;
 	}
 	
-	public void AjouterVP (String id_etudiant, String id_equipeSport){
+	public void ajouterVPForNewEquipeSport (String id_etudiant, String id_equipeSport){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
@@ -138,7 +140,7 @@ public class VPDao {
 		}
 	}
 	
-	public void ModifierVPForEquipeSport (String id_equipeSport, String id_etudiant){
+	public void modifierVPForExistEquipeSport (String id_etudiant, String id_equipeSport){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
@@ -155,7 +157,7 @@ public class VPDao {
 		}
 	}
 	
-	public void ModifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
+	public void modifierNoteVP (String id_vp, String id_equipeSport, float moyenne){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
@@ -171,6 +173,49 @@ public class VPDao {
 		catch (SQLException e){
 			e.printStackTrace();
 		}
+	}
+	
+	public VP getVPAndEquipeSport (String id_equipeSport){
+		VP vp = null;
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("SELECT etudiant.*, vp.*, equipe_sport.*, sport.* FROM etudiant INNER JOIN  (vp INNER JOIN (equipe_sport INNER JOIN sport ON equipe_sport.id_sport = sport.id_sport) ON vp.id_equipeSport = equipe_sport.id_equipeSport) ON etudiant.id_etudiant = vp.id_etudiant WHERE vp.id_equipeSport = ?");
+			stmt.setString(1,  id_equipeSport);
+			ResultSet results = stmt.executeQuery();
+			if(results.next()){
+				vp = new VP(
+						results.getString("vp.id_etudiant"),
+						results.getString("etudiant.nom_etudiant"),
+						results.getString("etudiant.prenom_etudiant"),
+						results.getString("etudiant.classe_etudiant"),
+						results.getString("etudiant.tel_etudiant"),
+						results.getString("etudiant.mail_etudiant"),
+						results.getString("etudiant.photo_etudiant"),
+						results.getBoolean("etudiant.cotisation_etudiant"),
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant"),
+						results.getString("vp.id_equipeSport"),
+						results.getFloat("vp.note_vp"));
+				vp.setEquipesport(new EquipeSport(
+						results.getString("sport.id_sport"),
+						results.getString("sport.nom_sport"),
+						results.getString("equipe_sport.id_equipeSport"),
+						results.getString("equipe_sport.nom_equipeSport"),
+						results.getString("equipe_sport.id_categorie"),
+						results.getString("description_equipeSport")
+								));
+			}
+			//Fermer la connexion
+			results.close();
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return vp;
 	}
 
 }

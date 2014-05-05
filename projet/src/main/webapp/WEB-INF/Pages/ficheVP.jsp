@@ -180,7 +180,7 @@
 					</div>
 					<div id="newSeance">
 						<h3>Ajouter une séance</h3>
-						<form method="POST" action="ajouterseance">
+						<form method="POST" action="fichevp">
 							<label for="numseance">Séance n° : </label> <input type="text"
 								name="numseance" id="numseance" /><br /> <label for="date">Date
 								: </label> <input type="date" name="date" id="date" /><br />

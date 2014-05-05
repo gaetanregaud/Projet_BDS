@@ -1,9 +1,12 @@
 package bds.devweb.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Seance {
 	
+	private static DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
 	
 	private String id_seance;
 	private String id_etudiant;
@@ -19,6 +22,10 @@ public class Seance {
 		this.date_seance = date_seance;
 		this.presence_seance = presence_seance;
 		etudiant = new Etudiant("", "", "", "", "", "", "", false, false, "");
+	}
+	
+	public String getDateFormatee() {
+		return dateFormat.format(date_seance);
 	}
 
 	public String getId_seance() {

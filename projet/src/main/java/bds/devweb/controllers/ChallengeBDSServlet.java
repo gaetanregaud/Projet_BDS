@@ -37,26 +37,36 @@ public class ChallengeBDSServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		// Retourne la liste des sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
-		// Fin Listes de la barre de menu du header
-		//Donn��es relatives �� la page
+			
+		// Retourne la list des equipes sports (AS) de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+			
+		//Recupère l'id de connexion et Retourne la fiche du BDS de l'étudiant
 			String identifiant = (String) request.getSession().getAttribute("user_id");
 			BDS bds = Manager.getInstance().getBDS(identifiant);
 			request.setAttribute("bds", bds);
+			
+		//Retourne la liste des challenges de la BDD
 			List<Challenge> challenges = Manager.getInstance().listerChallenge();
 			request.setAttribute("challenges", challenges);
+		
+		//Retourne la liste des adresses de la BDD
 			List<Adresse> adresses = Manager.getInstance().listerAdresse();
 			request.setAttribute("adresses", adresses);
+			
+		// Retourne la liste des participants aux challenges de la BDD
 			List<Participer> participants = Manager.getInstance().listerParticipation();
 			request.setAttribute("participants", participants);
+			
+		// Retourne la liste des noms de challenges 
 			List<Challenge> typeschallenge = Manager.getInstance().listerTypeChallenge();
 			request.setAttribute("typeschallenge", typeschallenge);
 			
-		//Fin Donn��es relatives �� la page
+		//Affiche la page challenge.jsp
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/challengeBDS.jsp");
 			view.forward(request, response);
 			
@@ -64,8 +74,10 @@ public class ChallengeBDSServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Récupère le type de la method post pour savoir qu'elle method post aplliquer
 		String type = request.getParameter("type");
-		if(type.equals("newChallenge")){
+		
+		if(type.equals("newChallenge")){ //Methode pour la création d'un challenge
 			String id_challenge = request.getParameter("id_challenge");
 			String nom_challenge = request.getParameter("nom_challenge");
 			String date = request.getParameter("date_challenge");
@@ -89,33 +101,33 @@ public class ChallengeBDSServlet extends HttpServlet {
 			System.out.print(id_adresse);
 			Challenge challenge = new Challenge(id_challenge, nom_challenge, date_challenge, heure_challenge, description_challenge, id_adresse);
 			System.out.print(challenge);
-			Manager.getInstance().ajouterChallenge(challenge);
+			Manager.getInstance().ajouterChallenge(challenge); //Ajoute le challenge à la BDD
 			response.sendRedirect("challengebds");
 		}
-		if(type.equals("suprChallenge")){
+		if(type.equals("suprChallenge")){ //Method pour supprimer un challenge existant
 			String id_challenge = request.getParameter("id_challenge");
-			Manager.getInstance().deleteChallenge(id_challenge);
+			Manager.getInstance().supprimerChallenge(id_challenge); // Supprime le challenge par rapport à son id de la BDD
 			response.sendRedirect("challengebds");
 		}
-		if(type.equals("modifChallenge")){
+		if(type.equals("modifChallenge")){ //Method pour séléctionner et retourner le challenge à modifier
 			String id_challenge = request.getParameter("id_challenge");
-			Challenge challenge = Manager.getInstance().getChallenge(id_challenge);
+			Challenge challenge = Manager.getInstance().getChallenge(id_challenge); //Récupère le challenge par son id dans la BDD
 			Gson gson = new Gson();
 			String challengeJson = gson.toJson(challenge);
 			response.setContentType("application/json");
-			response.getWriter().write(challengeJson);
+			response.getWriter().write(challengeJson);//Renvoie le challenge en JSON pour le JS
 			System.out.println("Ca marche");
 		}
-		if(type.equals("ajouChallenge")){
+		if(type.equals("ajouChallenge")){ // Method pour récupérer les informations d'un challenge déja existant dans la BDD
 			String nom_challenge = request.getParameter("nom_challenge");
-			Challenge challenge = Manager.getInstance().getLastChallenge(nom_challenge);
+			Challenge challenge = Manager.getInstance().getLastChallenge(nom_challenge); //Récupère les informations du dernier challenge ayant le nom
 			Gson gson = new Gson();
 			String challengeJson = gson.toJson(challenge);
 			response.setContentType("application/json");
-			response.getWriter().write(challengeJson);
+			response.getWriter().write(challengeJson); //Renvoie les informations du challenge en JSON pour le JS
 			System.out.println("Ca marche");
 		}
-		if(type.equals("validerModifChallenge")){
+		if(type.equals("validerModifChallenge")){ //Method pour enregistrer les informations modifiés du challenge dans la BDD
 			String id_challenge = request.getParameter("modifid_challenge");
 			String nom_challenge = request.getParameter("modifnom_challenge");
 			String date = request.getParameter("modifdate_challenge");
@@ -137,7 +149,7 @@ public class ChallengeBDSServlet extends HttpServlet {
 			String description_challenge = request.getParameter("modifdescription");
 			String id_adresse = request.getParameter("modiflieu");
 			Challenge challenge = new Challenge(id_challenge, nom_challenge, date_challenge, heure_challenge, description_challenge, id_adresse);
-			Manager.getInstance().modifierChallenge(challenge);
+			Manager.getInstance().modifierChallenge(challenge); //Enregistre les informations modifiés dans la BDD
 			response.sendRedirect("challengebds");
 		}
 	}

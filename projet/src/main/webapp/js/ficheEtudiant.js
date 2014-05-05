@@ -36,7 +36,7 @@ $(document).ready(function() {
 		$("#table_autrepratique").hide();
 	});
 	
-	// filedset Challenge
+	// fieldset Challenge
 	$("#table_challenge").hide();
 	$("#inscriptionChallenge").hide();
 	
@@ -54,5 +54,21 @@ $(document).ready(function() {
 		$("#table_challenge").hide();
 		$("#inscriptionChallenge").show();
 	});
+	
+	// fieldset inscription AS
+	
+	$("#inscriptionAS").hide();
+	
+	$("#btn_inscriptionAS").click(function(){
+		$("#btn_inscriptionAS").hide();
+		$("#inscriptionAS").show();
+	});
+	
+	$("#btn_retourInscription").click(function(){
+		$("#inscriptionAS").hide();
+		$("#btn_inscriptionAS").show();
+	});
+	
+	
 	
 });

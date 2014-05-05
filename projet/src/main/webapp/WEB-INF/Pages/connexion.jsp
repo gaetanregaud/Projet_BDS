@@ -30,11 +30,10 @@
 						<label for="password">Mot de passe</label> <input type="password"
 							id="password" name="password" required /> <br />
 						<p>
-							Vous êtes : <input type="radio" name="compte" value="etudiant"
-								id="etudiant" required /><label for="etudiant">Etudiant</label>
-							<input type="radio" name="compte" value="vp" id="vp" required /><label
-								for="vp">VP</label> <input type="radio" name="compte"
-								value="bds" id="bds" required /><label for="bds">BDS</label>
+							Vous êtes :
+							<input type="radio" name="compte" value="etudiant" id="etudiant" required /><label for="etudiant">Etudiant</label>
+							<input type="radio" name="compte" value="vp" id="vp" required /><label for="vp">VP</label>
+							<input type="radio" name="compte" value="bds" id="bds" required /><label for="bds">BDS</label>
 						</p>
 						<input type="submit" value="Connexion" class="sansLabel" />
 						<a href="inscription"><input type="button" value="s'inscrire"/></a> <br />

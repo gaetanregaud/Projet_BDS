@@ -74,7 +74,7 @@ public class ParticiperDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("SELECT participer.*, challenge.*, adresse.* FROM participer INNER JOIN (challenge INNER JOIN adresse ON challenge.id_adresse = adresse.id_adr) ON participer.id_challenge = challenge.id_challenge WHERE participer.id_challenge = ?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT participer.*, challenge.*, etudiant.*, adresse.* FROM adresse INNER JOIN (challenge INNER JOIN (participer INNER JOIN etudiant ON participer.id_etudiant = etudiant.id_etudiant)ON participer.id_challenge = challenge.id_challenge) ON adresse.id_adr = challenge.id_adresse WHERE participer.id_challenge = ? ORDER BY challenge.date_challenge DESC");
 			stmt.setString(1,  id_challenge);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()){
@@ -82,6 +82,17 @@ public class ParticiperDao {
 						results.getString("participer.id_etudiant"),
 						results.getString("participer.id_challenge"),
 						results.getString("participer.presence"));
+				participer.setEtudiant(new Etudiant(
+						results.getString("etudiant.id_etudiant"),
+						results.getString("etudiant.nom_etudiant"),
+						results.getString("etudiant.prenom_etudiant"),
+						results.getString("etudiant.classe_etudiant"),
+						results.getString("etudiant.tel_etudiant"),
+						results.getString("etudiant.mail_etudiant"),
+						results.getString("etudiant.photo_etudiant"),
+						results.getBoolean("etudiant.cotisation_etudiant"),
+						results.getBoolean("etudiant.certificat_etudiant"),
+						results.getString("licence_etudiant")));
 				participer.setChallenge(new Challenge(
 						results.getString("challenge.id_challenge"),
 						results.getString("challenge.nom_challenge"),
@@ -134,6 +145,13 @@ public class ParticiperDao {
 						results.getBoolean("etudiant.cotisation_etudiant"),
 						results.getBoolean("etudiant.certificat_etudiant"),
 						results.getString("licence_etudiant")));
+				participer.setChallenge(new Challenge(
+						results.getString("challenge.id_challenge"),
+						results.getString("challenge.nom_challenge"),
+						results.getDate("challenge.date_challenge"),
+						results.getTime("challenge.heure_challenge"),
+						results.getString("challenge.description_challenge"),
+						results.getString("challenge.id_adresse")));
 				participer.getChallenge().setAdresse(new Adresse(
 						results.getString("adresse.id_adr"),
 						results.getString("adresse.site_adr"),
@@ -156,7 +174,7 @@ public class ParticiperDao {
 		return listeParticipation;
 	}
 	
-	public void AjouterParticipationToChallenge (Participer participer){
+	public void ajouterParticipationToChallenge (Participer participer){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			// Utiliser la connexion
@@ -175,14 +193,14 @@ public class ParticiperDao {
 		}	
 	}
 	
-	public void ModifierPresence (String id_etudiant, String id_challenge, String presence){
+	public void modifierPresence (Participer participer){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			// Utiliser la connexion
 			PreparedStatement stmt = connection.prepareStatement("UPDATE participer SET presence = ? WHERE id_etudiant = ? AND id_challenge = ?");
-			stmt.setString(1, presence);
-			stmt.setString(2, id_etudiant);
-			stmt.setString(3, id_challenge);
+			stmt.setString(1, participer.getPresence());
+			stmt.setString(2, participer.getId_etudiant());
+			stmt.setString(3, participer.getId_challenge());
 			stmt.executeUpdate();
 
 			// Fermer la connexion

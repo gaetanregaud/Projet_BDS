@@ -27,11 +27,12 @@ public class ParticiperServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id_etudiant = (String) request.getSession().getAttribute("user_id");
-		String id_challenge = request.getParameter("id_challenge");
-		Participer participer = new Participer(id_etudiant, id_challenge, "-1");
-		Manager.getInstance().ajouterParticipationToChallenge(participer);
-		response.sendRedirect("ficheetudiant");
+		// Method post pour ajouter la participation d'un étudiant à un challenge
+			String id_etudiant = (String) request.getSession().getAttribute("user_id"); //Récupère l'id de connexion
+			String id_challenge = request.getParameter("id_challenge"); //Récupère l'id du challenge
+			Participer participer = new Participer(id_etudiant, id_challenge, "-1"); 
+			Manager.getInstance().ajouterParticipationToChallenge(participer); //Ajoute la participation à la BDD
+			response.sendRedirect("ficheetudiant"); //Renvoie à la servlet ficheetudiant
 		
 		
 	}

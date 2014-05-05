@@ -73,11 +73,13 @@ $(document).ready(function() {
 		$("#ajousport").show();
 	});
 	
-	$(".vp").keyup(function(){
+	$("#newvp").keyup(function(){
 		$.ajax({
-			url:"rechercheridetudiant",
+			url:"sportbds",
 			type:"POST",
-			data:{vp:this.value
+			data:{
+				type:"verifIdentifiant",
+				id_etudiant:$("#newvp").val()
 			}
 		}).done(function(data){
 			if(data == 'oui'){

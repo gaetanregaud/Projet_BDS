@@ -11,7 +11,7 @@ import bds.devweb.model.Sport;
 
 public class SportDao {
 	
-	public List<Sport> listerLiSports (){
+	public List<Sport> listerSports (){
 		List<Sport> listeSport = new ArrayList<Sport>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -35,13 +35,13 @@ public class SportDao {
 		return listeSport;
 	}	
 
-	public void ajouterSport (String id_sport, String nom_sport){
+	public void ajouterSport (Sport sport){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO sport (id_sport, nom_sport, description_sport) VALUES (?, ?, '')");
-			stmt.setString(1,  id_sport);
-			stmt.setString(2,  nom_sport);
+			stmt.setString(1,  sport.getId_sport());
+			stmt.setString(2,  sport.getNom_sport());
 			stmt.executeUpdate();
 			//Fermer la connexion
 			stmt.close();
@@ -52,7 +52,7 @@ public class SportDao {
 		}
 	}
 	
-	public void deleteSport (String id_Sport){
+	public void supprimerSport (String id_Sport){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion

@@ -28,32 +28,36 @@ public class AdministratifBDSServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		//Retourne la liste des Sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
-		//Donn��es relatives �� la page
-			List<Etudiant> listeEtudiantNotOK = Manager.getInstance().listerEtudiantNotOk();
-			request.setAttribute("listeEtudiantNotOK", listeEtudiantNotOK);
-		//Fin Donn��es relatives �� la page
+			
+		//Retourne la liste es équipes de sport (AS) de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+
+		//Retourne la liste des étudiants de la BDD
+			List<Etudiant> listeEtudiant = Manager.getInstance().listerEtudiant();
+			request.setAttribute("listeEtudiant", listeEtudiant);
+			
+		//Affiche la page administratif.jsp
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/administratifBDS.jsp");
 			view.forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String type = request.getParameter("type");
-		if(type.equals("recherche_etudiant")){
+		String type = request.getParameter("type"); //Récupère le type pour savoir qu'elle method post doit être exécuté
+		if(type.equals("recherche_etudiant")){ //Exécution du post de la recherche etudiant
 			String id_etudiant = request.getParameter("id_etudiant");
-			Etudiant etudiant = Manager.getInstance().getEtudiant(id_etudiant);
+			Etudiant etudiant = Manager.getInstance().getEtudiant(id_etudiant); //Récupère la fiche étudiante correspondant à l'id
 			Gson gson = new Gson();
-			String etudiantJson = gson.toJson(etudiant);
+			String etudiantJson = gson.toJson(etudiant); //Transforme la fiche etudiante en JSON
 			response.setContentType("application/json");
-			response.getWriter().write(etudiantJson);
+			response.getWriter().write(etudiantJson); //Renvoie de la réponse en Json pour le JS
 			System.out.println("Ca marche");
 		}
-		if(type.equals("modif_infoEtudiant")){
+		if(type.equals("modif_infoEtudiant")){ //Exucution du post modifier un étudiant
 			String id_etudiant = request.getParameter("id_etudiant");
 			String cotisation = request.getParameter("cotisation");
 			String certificat = request.getParameter("certificat");
@@ -68,7 +72,7 @@ public class AdministratifBDSServlet extends HttpServlet {
 			}
 			Etudiant etudiant = Manager.getInstance().getEtudiant(id_etudiant);
 			Etudiant etudiant1 = new Etudiant(id_etudiant, etudiant.getNom(), etudiant.getPrenom(), etudiant.getClasse(), etudiant.getTelephone(), etudiant.getMail(), etudiant.getPhoto(), cotis, certif, licence);
-			Manager.getInstance().modifEtudiant(etudiant1);
+			Manager.getInstance().modifEtudiant(etudiant1); //Modifie la fiche étudiante dans la BDD
 			System.out.println("Ca marche");
 		}
 	}

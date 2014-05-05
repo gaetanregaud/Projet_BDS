@@ -41,30 +41,32 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="etudiant" items="${listeEtudiantNotOK}">
-									<tr>
-										<td><span class="info" id="${etudiant.identifiant}">${etudiant.nom}
-												${etudiant.prenom}</span></td>
-										<td></td>
-										<td><c:if test="${etudiant.isCotisation() == true}">
-												<span class="oui">Oui</span>
-											</c:if>
-											<c:if test="${etudiant.isCotisation() == false}">
-												<span class="non">Non</span>
-											</c:if></td>
-										<td><c:if test="${etudiant.isCertificat() == true}">
-												<span class="oui">Oui</span>
-											</c:if>
-											<c:if test="${etudiant.isCertificat() == false}">
-												<span class="non">Non</span>
-											</c:if></td>
-									</tr>
+								<c:forEach var="etudiant" items="${listeEtudiant}">
+									<c:if test="${etudiant.isCotisation() == false || etudiant.isCertificat() == false}">
+										<tr>
+											<td><span class="info" id="${etudiant.identifiant}">${etudiant.nom}
+													${etudiant.prenom}</span></td>
+											<td></td>
+											<td><c:if test="${etudiant.isCotisation() == true}">
+													<span class="oui">Oui</span>
+												</c:if>
+												<c:if test="${etudiant.isCotisation() == false}">
+													<span class="non">Non</span>
+												</c:if></td>
+											<td><c:if test="${etudiant.isCertificat() == true}">
+													<span class="oui">Oui</span>
+												</c:if>
+												<c:if test="${etudiant.isCertificat() == false}">
+													<span class="non">Non</span>
+												</c:if></td>
+										</tr>
+									</c:if>
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
 					<div>
-						<c:forEach var="etudiant" items="${listeEtudiantNotOK}">
+						<c:forEach var="etudiant" items="${listeEtudiant}">
 							<div class="infoEtudiant" id="info${etudiant.identifiant}">
 								<h5>${etudiant.identifiant}</h5>
 								<p>

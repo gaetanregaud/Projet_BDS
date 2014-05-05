@@ -15,8 +15,8 @@ import bds.devweb.model.VP;
 
 public class PratiquerDao {
 	
-	public List<Pratiquer> listerPratiquerforEtudiant (String identifiant){
-		List<Pratiquer> listePratiquerforEtudiant = new ArrayList<Pratiquer>();
+	public List<Pratiquer> listerPratiqueforEtudiant (String identifiant){
+		List<Pratiquer> listePratiqueforEtudiant = new ArrayList<Pratiquer>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
@@ -47,9 +47,10 @@ public class PratiquerDao {
 								results.getString("sport.nom_sport"),
 								results.getString("equipe_sport.id_equipeSport"),
 								results.getString("equipe_sport.nom_equipeSport"),
+								results.getString("equipe_sport.id_categorie"),
 								results.getString("description_equipeSport")
 								));
-				listePratiquerforEtudiant.add(pratiquer);
+				listePratiqueforEtudiant.add(pratiquer);
 			}
 			//Fermer la connexion
 			results.close();
@@ -59,16 +60,16 @@ public class PratiquerDao {
 		catch (SQLException e){
 			e.printStackTrace();
 		}
-		return listePratiquerforEtudiant;
+		return listePratiqueforEtudiant;
 	}
 	
-	public List<Pratiquer> listerPratiquantbyVP (String identifiant){
+	public List<Pratiquer> listerPratiquantbyEquipeSport (String id_equipeSport){
 		List<Pratiquer> listerPratiquantbyVP = new ArrayList<Pratiquer>();
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("SELECT etudiant.*, pratiquer.*, vp.* FROM etudiant INNER JOIN (pratiquer INNER JOIN vp ON pratiquer.id_equipeSport = vp.id_equipeSport) ON etudiant.id_etudiant = pratiquer.id_etudiant WHERE vp.id_equipeSport = ?");
-			stmt.setString(1,  identifiant);
+			PreparedStatement stmt = connection.prepareStatement("SELECT etudiant.*, pratiquer.*, vp.* FROM etudiant INNER JOIN (pratiquer INNER JOIN vp ON pratiquer.id_equipeSport = vp.id_equipeSport) ON etudiant.id_etudiant = pratiquer.id_etudiant WHERE vp.id_equipeSport = ? ORDER BY etudiant.nom_etudiant ASC, etudiant.prenom_etudiant ASC");
+			stmt.setString(1,  id_equipeSport);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()){
 				Pratiquer pratiquer = new Pratiquer(
@@ -100,42 +101,21 @@ public class PratiquerDao {
 		return listerPratiquantbyVP;
 	}
 	
-	public List<Pratiquer> listerPratiquantNotebyVP (String identifiant){
-		List<Pratiquer> listerPratiquantNotebyVP = new ArrayList<Pratiquer>();
+	public void ajouterPratique (Pratiquer pratique){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("SELECT etudiant.*, pratiquer.*, vp.* FROM etudiant INNER JOIN (pratiquer INNER JOIN vp ON pratiquer.id_equipeSport = vp.id_equipeSport) ON etudiant.id_etudiant = pratiquer.id_etudiant WHERE vp.id_equipeSport = ? AND pratiquer.note = '1'");
-			stmt.setString(1,  identifiant);
-			ResultSet results = stmt.executeQuery();
-			while(results.next()){
-				Pratiquer pratiquer = new Pratiquer(
-						results.getString("pratiquer.id_etudiant"),
-						results.getString("pratiquer.id_equipeSport"),
-						results.getString("pratiquer.note"));
-						pratiquer.setEtudiant(new Etudiant(
-								results.getString("etudiant.id_etudiant"),
-								results.getString("etudiant.nom_etudiant"),
-								results.getString("etudiant.prenom_etudiant"),
-								results.getString("etudiant.classe_etudiant"),
-								results.getString("etudiant.tel_etudiant"),
-								results.getString("etudiant.mail_etudiant"),
-								results.getString("etudiant.photo_etudiant"),
-								results.getBoolean("etudiant.cotisation_etudiant"),
-								results.getBoolean("etudiant.certificat_etudiant"),
-								results.getString("licence_etudiant")
-								));
-				listerPratiquantNotebyVP.add(pratiquer);
-			}
-			//Fermer la connexion
-			results.close();
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO pratiquer VALUES (?, ?, ?)");
+			stmt.setString(1,  pratique.getId_etudiant());
+			stmt.setString(2,  pratique.getId_equipeSport());
+			stmt.setString(3,  pratique.getNote());
+			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 		}
 		catch (SQLException e){
-			e.printStackTrace();
+				e.printStackTrace();
 		}
-		return listerPratiquantNotebyVP;
 	}
 
 }

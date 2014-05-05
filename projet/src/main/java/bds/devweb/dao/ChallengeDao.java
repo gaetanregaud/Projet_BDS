@@ -150,7 +150,7 @@ public class ChallengeDao {
 		return listeTypeChallenge;
 	}
 	
-	public void AjouterChallenge (Challenge challenge){
+	public void ajouterChallenge (Challenge challenge){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			// Utiliser la connexion
@@ -172,7 +172,7 @@ public class ChallengeDao {
 		}
 	}
 	
-	public void deleteChallenge (String id_challenge){
+	public void supprimerChallenge (String id_challenge){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion

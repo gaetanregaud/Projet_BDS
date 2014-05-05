@@ -30,11 +30,13 @@ public class AccueilServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Listes de la barre de menu du header
-			List<Sport> listeSports = Manager.getInstance().listerLiSports();
+		//Retourne la liste des Sports de la BDD
+			List<Sport> listeSports = Manager.getInstance().listerSports();
 			request.setAttribute("listeSports", listeSports);
-			List<EquipeSport> listeEuqipeSport = Manager.getInstance().listerEquipeSport();
-			request.setAttribute("listeEuqipeSport",listeEuqipeSport);
+		//Retourne la liste es équipes de sport (AS) de la BDD
+			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
+			request.setAttribute("listeEquipeSport",listeEquipeSport);
+
 		// Données du Calendrier
 			Date date = new Date();
 			int mois = date.getMonth();
@@ -43,11 +45,14 @@ public class AccueilServlet extends HttpServlet {
 			request.setAttribute("jour", jour);
 			int annee1 = date.getYear();
 			int annee2 = annee1 - 1;
-			List<DateCalendrier> calendriers = Manager.getInstance().calendrier(annee2, annee1);
-			request.setAttribute("calendriers", calendriers);
+			//Retourne un calendrier entre Septembre et Aout en fonction de l'année de bébut et de fin
+				List<DateCalendrier> calendriers = Manager.getInstance().calendrier(annee2, annee1);
+				request.setAttribute("calendriers", calendriers);
+		//Retourne la liste des challenges de la BDD
 			List<Challenge> challenges =  Manager.getInstance().listerChallenge();
 			request.setAttribute("challenges", challenges);
-		//Affichage de la Page
+		
+		//Afiche la page d'acceuil du site index.jsp
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/index.jsp");
 		view.forward(request, response);
 	}
