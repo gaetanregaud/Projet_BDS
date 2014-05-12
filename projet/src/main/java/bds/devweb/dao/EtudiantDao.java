@@ -16,6 +16,7 @@ public class EtudiantDao {
 	
 	public boolean seConnecter(String identifiant, String password){
 		boolean existe = false;
+		String valid = "valid";
 		
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -25,7 +26,9 @@ public class EtudiantDao {
 			while(results.next() & !existe){
 				if(identifiant.equals(results.getString("id_etudiant"))){
 					if(password.equals(results.getString("mpd_etudiant"))){
-						existe = true;
+						if(valid.equals(results.getString("validation"))){
+							existe = true;
+						}
 					}
 				}
 			}

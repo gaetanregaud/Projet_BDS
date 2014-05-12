@@ -13,6 +13,7 @@ import bds.devweb.dao.ParticiperDao;
 import bds.devweb.dao.PratiquerDao;
 import bds.devweb.dao.SeanceDao;
 import bds.devweb.dao.SportDao;
+import bds.devweb.dao.TelechargementDao;
 import bds.devweb.dao.VPDao;
 import bds.devweb.model.Adresse;
 import bds.devweb.model.BDS;
@@ -25,6 +26,7 @@ import bds.devweb.model.Participer;
 import bds.devweb.model.Pratiquer;
 import bds.devweb.model.Seance;
 import bds.devweb.model.Sport;
+import bds.devweb.model.Telechargement;
 import bds.devweb.model.VP;
 
 public class Manager {
@@ -43,6 +45,7 @@ public class Manager {
 	private CalendrierDao calendrierDao;
 	private AdresseDao adresseDao;
 	private NoteVPDao notevpDao;
+	private TelechargementDao telechargementDao;
 	
 	public static Manager getInstance(){
 		if(instance == null){
@@ -64,6 +67,7 @@ public class Manager {
 		calendrierDao = new CalendrierDao();
 		adresseDao = new AdresseDao();
 		notevpDao = new NoteVPDao();
+		telechargementDao = new TelechargementDao();
 	}
 	
 	//Requète pour un EtudiantDAO
@@ -269,6 +273,12 @@ public class Manager {
 	
 	public void modifierPresence (Participer participer){
 		participerDao.modifierPresence(participer);
+	}
+	
+	//Requète pour TéléchargementDao
+	
+	public List<Telechargement> listerEtudiantNote(){
+		return telechargementDao.listerEtudiantNote();
 	}
 	
 	//Requète pour DateCalendrierDao

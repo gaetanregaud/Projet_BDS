@@ -176,4 +176,12 @@
     <servlet-name>InscriptionServlet</servlet-name>
     <url-pattern>/inscription</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Telechargement</servlet-name>
+    <servlet-class>bds.devweb.controllers.TelechargementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Telechargement</servlet-name>
+    <url-pattern>/telechargement</url-pattern>
+  </servlet-mapping>
 </web-app>
