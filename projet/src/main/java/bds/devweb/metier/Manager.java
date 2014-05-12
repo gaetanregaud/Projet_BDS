@@ -277,5 +277,7 @@ public class Manager {
 		return calendrierDao.calendrier(annee1, annee2);
 	}
 	
+	// Autre Requète
+	
 	
 }

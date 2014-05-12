@@ -4,11 +4,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+
+
+
+
+
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.mail.*;
 
 import bds.devweb.metier.Manager;
 import bds.devweb.model.EquipeSport;
@@ -87,8 +96,26 @@ public class InscriptionServlet extends HttpServlet {
 				System.out.println(email);
 				Etudiant etudiant = new Etudiant(identifiant, nom, prenom, classe, tel, email, "", false, false, "");
 				Manager.getInstance().inscriptionEtudiant(etudiant, password); //Ajoute l'étudiant à la BDD
+				
+				try { 
+		            Email email1 = new SimpleEmail();
+		            email1.setHostName("smtp.gmail.com");
+		            email1.setSmtpPort(587);
+		            email1.setAuthenticator(new DefaultAuthenticator("gaetan.regaud@gmail.com", "GR30031990"));
+		            email1.setSSLOnConnect(true);
+		            email1.setFrom("gaetan.regaud@gmail.com");
+		            email1.setSubject("TestMail");
+		            email1.setMsg("This is a test mail ... :-)");
+		            email1.addTo("gaetan.regaud@hei.fr");
+		            email1.send();
+		        } catch (Exception e) {
+		            System.out.print("Erreur d'envoie:" + e);
+		        }
+				
 				response.sendRedirect("connexion"); //Renvoie sur la servlet connexion
 			}
+
+
 	}
 
 }
