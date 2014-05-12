@@ -153,7 +153,7 @@
 							<select id="sport" name="sport">
 								<c:forEach var="sport" items="${listeSports}">
 									<optgroup label="${sport.nom_sport}">
-										<c:forEach var="equipeSport" items="${listeEuqipeSport}">
+										<c:forEach var="equipeSport" items="${listeEquipeSport}">
 											<c:if test="${sport.id_sport == equipeSport.id_sport}">
 												<option value="${equipeSport.id_equipeSport}">${equipeSport.nom_sport} (${equipeSport.nom_equipeSport})</option>
 											</c:if>

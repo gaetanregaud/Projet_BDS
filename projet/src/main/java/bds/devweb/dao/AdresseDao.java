@@ -45,7 +45,7 @@ public class AdresseDao {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			// Utiliser la connexion
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO adresse  VALUES (?, ?, ?, ?, ?, ?, ?)");
-			stmt.setString(1, adresse.getId());
+			stmt.setInt(1, 0);
 			stmt.setString(2, adresse.getNom());
 			stmt.setString(3, adresse.getNum());
 			stmt.setString(4, adresse.getRue());

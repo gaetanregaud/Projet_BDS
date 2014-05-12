@@ -25,6 +25,7 @@
 				<form method="post" action="validation">
 					<fieldset>
 						<legend>Connexion</legend>
+						<input type="hidden" id="code" name="code" value="${code}"/>
 						<label for="identifiant">Identifiant HEI</label> <input
 							type="text" id="identifiant" name="identifiant" required /> <br />
 						<label for="password">Mot de passe</label> <input type="password"

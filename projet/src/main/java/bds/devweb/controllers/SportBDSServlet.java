@@ -1,6 +1,7 @@
 package bds.devweb.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -50,12 +51,22 @@ public class SportBDSServlet extends HttpServlet {
 			String type = request.getParameter("type");
 			
 		// Verifie si l'id étudiant existe dans la BDD
+			List<Etudiant> listeEtudiant = Manager.getInstance().listerEtudiant();
+			List<VP> listeVp = Manager.getInstance().listerVP();
 			if(type.equals("verifIdentifiant")){
-				List<Etudiant> listeEtudiant = Manager.getInstance().listerEtudiant();
-				String id_etudiant = request.getParameter("id_etudiant");
+				String identifiant = request.getParameter("id_etudiant");
 				for(int i=0; i<listeEtudiant.size(); i++){
-					if(listeEtudiant.get(i).getIdentifiant().equals(id_etudiant)){
-						response.getWriter().append("oui");
+					if(listeEtudiant.get(i).getIdentifiant().equals(identifiant)){
+						boolean exist = false;
+						for(int j=0; j<listeVp.size(); j++){
+							if(listeVp.get(j).getIdentifiant().equals(identifiant)){
+								exist = true;
+							}
+						}
+						if(exist == false){
+							PrintWriter out = response.getWriter();
+							out.append("oui");
+						}
 					}	
 				}
 			}
@@ -73,6 +84,8 @@ public class SportBDSServlet extends HttpServlet {
 				Manager.getInstance().ajouterEquipeSport(equipesport); //Ajout de l'équipe Sport à la BDD
 				Manager.getInstance().ajouterVPForNewEquipeSport(id_etudiant, id_equipeSport); //ajout du nouveau VP de l'équipe Sport à la BDD
 				System.out.println("Ajout Sport réussi");
+				// Renvoie sur la servlet sportbds
+				response.sendRedirect("sportbds");
 			}
 			
 		// Method post pour l'ajout d'une nouvelle equipe sport et du VP associé à un sport existant
@@ -85,6 +98,8 @@ public class SportBDSServlet extends HttpServlet {
 				Manager.getInstance().ajouterEquipeSport(equipesport); //Ajout de l'équipe sport à la BDD
 				Manager.getInstance().ajouterVPForNewEquipeSport(id_etudiant, id_equipeSport); //Ajout du Vp associé à l'équipe Sport à la BDD
 				System.out.println("Ajout Equipe Sport réussi");
+				// Renvoie sur la servlet sportbds
+				response.sendRedirect("sportbds");
 			}
 			
 		// Method post pour supprimer un sport ainsi que les équipes et VP associé à ce sport
@@ -92,6 +107,8 @@ public class SportBDSServlet extends HttpServlet {
 				String id_sport = request.getParameter("id_sport");
 				Manager.getInstance().supprimerSport(id_sport); //Supprime le sport, les equipes et les vp de la BDD
 				System.out.println("Supression sport réussi");
+				// Renvoie sur la servlet sportbds
+				response.sendRedirect("sportbds");
 			}
 			
 		// Method post pour supprimer une équipe sport et le vp associé
@@ -99,6 +116,8 @@ public class SportBDSServlet extends HttpServlet {
 				String id_equipeSport = request.getParameter("id_equipeSport");
 				Manager.getInstance().supprimerEquipeSport(id_equipeSport); //supprime l'équipe et le vp de la BDD
 				System.out.println("Supression Equipe Sport réussi");
+				// Renvoie sur la servlet sportbds
+				response.sendRedirect("sportbds");
 			}
 			
 		// Method post pour modifier un vp d'une équipe sport existant
@@ -107,10 +126,11 @@ public class SportBDSServlet extends HttpServlet {
 				String id_etudiant = request.getParameter("vp");
 				Manager.getInstance().modifierVPForExistEquipeSport(id_etudiant, id_equipeSport);
 				System.out.println("Modification VP réussi");
+				// Renvoie sur la servlet sportbds
+				response.sendRedirect("sportbds");
 			}
 
-		// Renvoie sur la servlet sportbds
-			response.sendRedirect("sportbds");
+		
 	}
 
 }

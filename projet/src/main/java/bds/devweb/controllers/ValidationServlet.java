@@ -35,18 +35,24 @@ public class ValidationServlet extends HttpServlet {
 			List<EquipeSport> listeEquipeSport = Manager.getInstance().listerEquipeSport();
 			request.setAttribute("listeEquipeSport",listeEquipeSport);
 			
+			String code = request.getParameter("code");
+			request.setAttribute("code", code);
+			System.out.println("hey   "+code);
+			
 		// Affiche la page de connexion.jsp
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/Pages/validation.jsp");
 			view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String code = request.getParameter("code");
+		System.out.println("hey   "+code);
 		String identifiant = request.getParameter("identifiant");
 		String password = request.getParameter("password");
 		String confirmMessage = "";
 		String errorMessage = "";
 		String bienvenue = "";
-		Manager.getInstance().ValidationEtudiant(identifiant, password);
+		Manager.getInstance().ValidationEtudiant(identifiant, password, code);
 		if(Manager.getInstance().seConnecterEtudiant(identifiant, password)){
 			String compte = "etudiant";
 			request.getSession().setAttribute("user_type", compte);

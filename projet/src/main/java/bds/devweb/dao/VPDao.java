@@ -20,12 +20,12 @@ public class VPDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement();
-			ResultSet results = stmt.executeQuery("SELECT vp.id_etudiant, etudiant.mpd_etudiant FROM vp INNER JOIN etudiant ON vp.id_etudiant = etudiant.id_etudiant");
+			ResultSet results = stmt.executeQuery("SELECT vp.id_etudiant, etudiant.mpd_etudiant, etudiant.validation FROM vp INNER JOIN etudiant ON vp.id_etudiant = etudiant.id_etudiant");
 			
 			while(results.next() & !existe){
 				if(identifiant.equals(results.getString("vp.id_etudiant"))){
 					if(password.equals(results.getString("etudiant.mpd_etudiant"))){
-						if(valid.equals(results.getString("validation"))){
+						if(valid.equals(results.getString("etudiant.validation"))){
 							existe = true;
 						}
 					}

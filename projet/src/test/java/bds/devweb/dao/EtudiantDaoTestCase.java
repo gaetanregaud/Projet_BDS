@@ -102,7 +102,7 @@ public class EtudiantDaoTestCase {
 	@Test
 	public void test_inscriptionEtudiant(){
 		Etudiant etudiant = new Etudiant("h00001", "admin", "admin", "h00", "0611223344", "admin.admin@hei.fr", "h00001", false, true, "123456789");
-		etudiantDao.inscriptionEtudiant(etudiant, "h00001");
+		etudiantDao.inscriptionEtudiant(etudiant, "h00001", 1234);
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement();

@@ -36,7 +36,7 @@ public class AdresseServlet extends HttpServlet {
 		String ville = request.getParameter("ville");
 		String pays = request.getParameter("pays");
 		System.out.println(ville);
-		Adresse adresse = new Adresse(" ", nom, num, rue, cp, ville, pays);
+		Adresse adresse = new Adresse("", nom, num, rue, cp, ville, pays);
 		Manager.getInstance().ajouterAdresse(adresse); //Ajoute l'adresse dans la BDD
 		adresse = Manager.getInstance().getAdresseByNom(nom); //Récupère l'id de l'adresse enregistré à l'instant
 		Gson gson = new Gson();

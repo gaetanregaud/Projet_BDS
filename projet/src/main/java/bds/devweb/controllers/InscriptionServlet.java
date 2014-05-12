@@ -4,21 +4,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-
-
-
-
-
-
-
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.mail.*;
 
 import bds.devweb.metier.Manager;
 import bds.devweb.model.EquipeSport;
@@ -97,9 +89,13 @@ public class InscriptionServlet extends HttpServlet {
 				String email = request.getParameter("email");
 				System.out.println(email);
 				Etudiant etudiant = new Etudiant(identifiant, nom, prenom, classe, tel, email, "", false, false, "");
-				Manager.getInstance().inscriptionEtudiant(etudiant, password); //Ajoute l'étudiant à la BDD
+				int code = 0;
+				Random r = new Random();
+				code = 1000 + r.nextInt(5000 - 1000);
+				System.out.println(code);
+				Manager.getInstance().inscriptionEtudiant(etudiant, password, code); //Ajoute l'étudiant à la BDD
 				
-				SendMail.InscriptionMail(email);
+				SendMail.InscriptionMail(email, code);
 				response.sendRedirect("connexion"); //Renvoie sur la servlet connexion
 			}
 

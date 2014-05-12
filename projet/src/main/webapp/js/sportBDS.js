@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	
 	$("#sports_vp").show();
+	$(".ok").hide();
 	
 	$(".info").click(function(){
 		$(".infoVP").hide();
@@ -73,24 +74,46 @@ $(document).ready(function() {
 		$("#ajousport").show();
 	});
 	
-	$("#newvp").keyup(function(){
+	$("#Snewvp").keyup(function(){
 		$.ajax({
 			url:"sportbds",
 			type:"POST",
 			data:{
 				type:"verifIdentifiant",
-				id_etudiant:$("#newvp").val()
+				id_etudiant:$("#Snewvp").val()
 			}
 		}).done(function(data){
 			if(data == 'oui'){
-				$(".oui").show();
-				$(".non").hide();
-				$(".ok").show();
+				$("#Soui").show();
+				$("#Snon").hide();
+				$("#Sok").show();
 			}
 			else{
-				$(".non").show();
-				$(".oui").hide();
-				$(".ok").hide();
+				$("#Snon").show();
+				$("#Soui").hide();
+				$("#Sok").hide();
+			}
+		});
+	});
+	
+	$("#Enewvp").keyup(function(){
+		$.ajax({
+			url:"sportbds",
+			type:"POST",
+			data:{
+				type:"verifIdentifiant",
+				id_etudiant:$("#Enewvp").val()
+			}
+		}).done(function(data){
+			if(data == 'oui'){
+				$("#Eoui").show();
+				$("#Enon").hide();
+				$("#Eok").show();
+			}
+			else{
+				$("#Enon").show();
+				$("#Eoui").hide();
+				$("#Eok").hide();
 			}
 		});
 	});

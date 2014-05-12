@@ -87,12 +87,12 @@ public class Manager {
 		return etudiantDao.listerEtudiant();
 	}
 	
-	public void inscriptionEtudiant(Etudiant etudiant, String password){
-		etudiantDao.inscriptionEtudiant(etudiant, password);
+	public void inscriptionEtudiant(Etudiant etudiant, String password, Integer code){
+		etudiantDao.inscriptionEtudiant(etudiant, password, code);
 	}
 	
-	public void ValidationEtudiant(String id_etudiant, String mdp_etudiant){
-		etudiantDao.ValidationEtudiant(id_etudiant, mdp_etudiant);
+	public void ValidationEtudiant(String id_etudiant, String mdp_etudiant, String code){
+		etudiantDao.ValidationEtudiant(id_etudiant, mdp_etudiant, code);
 	}
 	
 	// Requète pour VPDao

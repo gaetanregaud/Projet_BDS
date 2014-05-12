@@ -134,7 +134,7 @@ public class EtudiantDao {
 		}
 	}
 	
-	public void inscriptionEtudiant(Etudiant etudiant, String password){
+	public void inscriptionEtudiant(Etudiant etudiant, String password, int code){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
@@ -150,7 +150,7 @@ public class EtudiantDao {
 			stmt.setBoolean(9,  etudiant.isCotisation());
 			stmt.setBoolean(10,  etudiant.isCertificat());
 			stmt.setString(11,  etudiant.getLicence());
-			stmt.setString(12,  "1234");
+			stmt.setInt(12,  code);
 			stmt.executeUpdate();
 			//Fermer la connexion
 			stmt.close();
@@ -162,14 +162,15 @@ public class EtudiantDao {
 		}
 	}
 	
-	public void ValidationEtudiant(String id_etudiant, String mdp_etudiant){
+	public void ValidationEtudiant(String id_etudiant, String mdp_etudiant, String code){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("UPDATE etudiant SET validation = ? WHERE id_etudiant = ? AND mpd_etudiant = ?");
+			PreparedStatement stmt = connection.prepareStatement("UPDATE etudiant SET validation = ? WHERE id_etudiant = ? AND mpd_etudiant = ? AND validation = ?");
 			stmt.setString(1,  "valid");
 			stmt.setString(2,  id_etudiant);
 			stmt.setString(3,  mdp_etudiant);
+			stmt.setString(4,  code);
 			stmt.executeUpdate();
 			//Fermer la connexion
 			stmt.close();
