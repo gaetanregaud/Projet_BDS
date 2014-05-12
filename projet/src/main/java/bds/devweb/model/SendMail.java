@@ -38,10 +38,10 @@ public class SendMail {
 			message.setSentDate(new Date());
 			message.setText("Merci de Vous êtes inscrit sur le site du BDS HEI\n"
 					+"Veuillez vous connecter sur la page ci dessous pour confirmer votre inscription\n"
-					+"https://localhost:8443/projet/connexion");
+					+"https://localhost:8443/projet/validation");
 
 			SMTPTransport transport = (SMTPTransport)session.getTransport("smtp"); 
-			transport.connect("smtp.gmail.com","gaetan.regaud@gmail.com","GR30031990");
+			transport.connect("smtp.gmail.com","gaetan.regaud@gmail.com","Password");
 			transport.sendMessage(message,message.getAllRecipients());
 			transport.close();
 			}

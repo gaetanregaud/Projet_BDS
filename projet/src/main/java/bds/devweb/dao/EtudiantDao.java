@@ -138,7 +138,7 @@ public class EtudiantDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			//Utiliser la connexion
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO etudiant VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO etudiant VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			stmt.setString(1,  etudiant.getIdentifiant());
 			stmt.setString(2,  password);
 			stmt.setString(3,  etudiant.getNom());
@@ -150,6 +150,26 @@ public class EtudiantDao {
 			stmt.setBoolean(9,  etudiant.isCotisation());
 			stmt.setBoolean(10,  etudiant.isCertificat());
 			stmt.setString(11,  etudiant.getLicence());
+			stmt.setString(12,  "1234");
+			stmt.executeUpdate();
+			//Fermer la connexion
+			stmt.close();
+			connection.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void ValidationEtudiant(String id_etudiant, String mdp_etudiant){
+		try {
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			//Utiliser la connexion
+			PreparedStatement stmt = connection.prepareStatement("UPDATE etudiant SET validation = ? WHERE id_etudiant = ? AND mpd_etudiant = ?");
+			stmt.setString(1,  "valid");
+			stmt.setString(2,  id_etudiant);
+			stmt.setString(3,  mdp_etudiant);
 			stmt.executeUpdate();
 			//Fermer la connexion
 			stmt.close();

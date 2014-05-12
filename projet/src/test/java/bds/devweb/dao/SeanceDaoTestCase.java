@@ -40,7 +40,7 @@ public class SeanceDaoTestCase {
 		stmt.executeUpdate("DELETE FROM bds");
 		stmt.executeUpdate("DELETE FROM vp");
 		stmt.executeUpdate("DELETE FROM etudiant");
-		stmt.executeUpdate("INSERT INTO etudiant VALUES ('h00000', 'h00000', 'admin', 'admin', '0611223344', 'admin.admin@hei.fr', 'h00000', 'h00', '0', '1', '123456789')");
+		stmt.executeUpdate("INSERT INTO etudiant VALUES ('h00000', 'h00000', 'admin', 'admin', '0611223344', 'admin.admin@hei.fr', 'h00000', 'h00', '0', '1', '123456789', '1234')");
 		stmt.executeUpdate("INSERT INTO sport VALUES ('s0', 'sport', 'description')");
 		stmt.executeUpdate("INSERT INTO categorie VALUES ('c0', 'categorie')");
 		stmt.executeUpdate("INSERT INTO equipe_sport VALUES ('es0', 'AS', 'c0', 'description', 's0')");

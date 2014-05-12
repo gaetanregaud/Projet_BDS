@@ -15,6 +15,7 @@ encoding//src/main/java/bds/devweb/controllers/NoterVPServlet.java=UTF-8
 encoding//src/main/java/bds/devweb/controllers/ParticiperServlet.java=UTF-8
 encoding//src/main/java/bds/devweb/controllers/SportBDSServlet.java=UTF-8
 encoding//src/main/java/bds/devweb/controllers/TelechargementServlet.java=UTF-8
+encoding//src/main/java/bds/devweb/controllers/ValidationServlet.java=UTF-8
 encoding//src/main/java/bds/devweb/filters/AuthenEtudiantFilter.java=UTF-8
 encoding//src/main/java/bds/devweb/filters/AuthenVpFilter.java=UTF-8
 encoding//src/main/java/bds/devweb/metier/Manager.java=UTF-8

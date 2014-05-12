@@ -91,6 +91,10 @@ public class Manager {
 		etudiantDao.inscriptionEtudiant(etudiant, password);
 	}
 	
+	public void ValidationEtudiant(String id_etudiant, String mdp_etudiant){
+		etudiantDao.ValidationEtudiant(id_etudiant, mdp_etudiant);
+	}
+	
 	// Requète pour VPDao
 	
 	public boolean seConnecterVP(String identifiant, String password){

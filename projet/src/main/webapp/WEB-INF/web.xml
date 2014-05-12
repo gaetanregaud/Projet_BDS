@@ -184,4 +184,12 @@
     <servlet-name>Telechargement</servlet-name>
     <url-pattern>/telechargement</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>Validation</servlet-name>
+    <servlet-class>bds.devweb.controllers.ValidationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Validation</servlet-name>
+    <url-pattern>/validation</url-pattern>
+  </servlet-mapping>
 </web-app>

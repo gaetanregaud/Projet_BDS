@@ -15,6 +15,8 @@ public class VPDao {
 	
 	public boolean seConnecter(String identifiant, String password){
 		boolean existe = false;
+		String valid = "valid";
+		
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement();
@@ -23,7 +25,9 @@ public class VPDao {
 			while(results.next() & !existe){
 				if(identifiant.equals(results.getString("vp.id_etudiant"))){
 					if(password.equals(results.getString("etudiant.mpd_etudiant"))){
-						existe = true;
+						if(valid.equals(results.getString("validation"))){
+							existe = true;
+						}
 					}
 				}
 			}
